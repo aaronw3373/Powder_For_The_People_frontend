@@ -1,0 +1,1 @@
+$(document).ready(function(){$("#login_button").on("click",function(){console.log("loginging in");$("#usn").val(),$("#psw").val();return!1}),$("#search_button").on("click",function(){return console.log("searching"),!1}),$("#about_button").on("click",function(){console.log("about click")}),$("#resort_list").on("click",function(){})});

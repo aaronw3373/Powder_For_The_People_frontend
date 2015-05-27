@@ -60,7 +60,7 @@ input{
   padding:20px;
 }
 #resort_list{
-  height: calc(100vh - 207px);
+  height: calc(100vh - 200px);
   margin: 0;
-  padding-top: 20px;
+  padding: 20px;
 }
