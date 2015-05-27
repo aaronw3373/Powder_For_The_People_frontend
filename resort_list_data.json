@@ -1,0 +1,28 @@
+"{
+  "Resorts": {
+    "Stowe":{
+      "vertical":2000,
+      "acers": 500,
+      "open": 85,
+      "newSnow": 4
+    },
+    "Killington":{
+      "vertical":2000,
+      "acers": 500,
+      "open": 85,
+      "newSnow": 4
+    },
+    "MountSnow":{
+      "vertical":2000,
+      "acers": 500,
+      "open": 85,
+      "newSnow": 4
+    },
+    "SundayRiver":{
+      "vertical":2000,
+      "acers": 500,
+      "open": 85,
+      "newSnow": 4
+    }
+  }
+}"

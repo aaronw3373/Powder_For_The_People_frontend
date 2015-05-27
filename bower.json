@@ -1,0 +1,23 @@
+{
+  "name": "project_2_frontend",
+  "version": "0.0.0",
+  "authors": [
+    "aaronw3373 <aaronw3373@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies":{
+    "jquery": "~2.1.4",
+    "modernizr": "~2.8.3"
+    },
+  "devDependencies": {
+    "jquery": "~2.1.4",
+    "modernizr": "~2.8.3"
+  }
+}
