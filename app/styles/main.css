@@ -1,4 +1,6 @@
 body{
+  min-width: 800px;
+  min-height:500px;
 }
 .container{
 margin:0;
@@ -13,8 +15,9 @@ padding: 0;
   padding-bottom: 10px;
 }
 #header h1{
-  font-size: 65px;
+  font-size: 4vw;
   color: #29527A;
+  height: 5vw;
   font-weight: bold;
   font-family: 'Righteous', cursive;
  }
@@ -28,19 +31,41 @@ padding: 0;
   text-align: right;
   padding-right: 30px;
 }
+input{
+  height: 4vw;
+  width 80
+  float: right;
+}
 #about_button{
   padding-left: 50px;
-  font-size: 30px;
+  font-size: 2vw;
 }
 #search_box{
   width:80%;
+  max-height: 40px;
+  min-height: 24px;
 }
-input{
-  height: 40px;
-  float: right;
+#search_button{
+  width:15%;
+  max-height: 40px;
+  min-height: 24px;
 }
 #login{
-  padding-right: 30px;
+}
+#login_button{
+  width: 15%;
+  max-height: 40px;
+  min-height: 24px;
+}
+#psw{
+  width: 40%;
+  max-height: 40px;
+  min-height: 24px;
+}
+#usn{
+  width: 40%;
+  max-height: 40px;
+  min-height: 24px;
 }
 #about_search_login{
   padding-top: 20px;
@@ -49,18 +74,31 @@ input{
   border-bottom: 4px solid #336699;
 }
 #resort_info{
-  height: calc(100vh - 200px);
+  height: calc(91vh - 10vw);
   margin: 0;
   padding:20px;
 }
+#resort_info h4{
+  font-size: 30px;
+}
+#resort_info h2{
+  font-size: 40px;
+}
+#wunderground{
+  margin-top: 300px;
+  background: url(../images/wundergroundLogo_4c_horz.jpg) no-repeat;
+  background-size: contain;
+  height:150px;
+  width:250px;
+}
 #pow_factor{
   border-right: 4px solid #336699;
-  height: calc(100vh - 200px);
+  height: calc(91vh - 10vw);
   margin: 0;
   padding:20px;
 }
 #resort_list{
-  height: calc(100vh - 200px);
+  height: calc(91vh - 10vw);
   margin: 0;
   padding: 20px;
 }

@@ -43,28 +43,41 @@
         </div>
         <div class="col-xs-4" id="login">
           <form>
-            <input type="submit" value="Login" id="login_button">
-            <input type="password" name="psw" placeholder=" password" id="psw">
             <input type="text" name="username" placeholder=" username" id="usn">
+            <input type="password" name="psw" placeholder=" password" id="psw">
+            <input type="submit" value="Login" id="login_button">
           </form>
         </div>
       </div>
 
       <div class="row" id="main">
+        <div class="col-xs-9" id="super_div" style= "display:none">
+          <h1>CRUD Resorts</h1>
+          <input type="text" id="name_crud" placeholder="name">
+          <input type="integer" id="vertical_crud" placeholder="vertical">
+          <input type="integer" id="acres_crud" placeholder="acres">
+          <input type="text" id="state_crud" placeholder="state">
+          <input type="text" id="location_crud" placeholder="location">
+          <input type="submit" value="Create" id="create_crud">
+        </div>
+
         <div class="col-xs-5" id="resort_info">
           <h2 id="resort_name">Resort</h2>
-          <h4>Recent Snowfall</h4>
-          <h4>Percent Open</h4>
-          <h4>Vertical Feet</h4>
-          <h4>Skiable Acres</h4>
+          <h4>Recent Snowfall:</h4>
+          <h4>Percent Open:</h4>
+          <h4 id="vertical">Vertical Feet</h4>
+          <h4 id="acres">Skiable Acres</h4>
+          <h4 id="current_temp_f">Temp</h4>
+          <div id="wunderground" href="http://www.wunderground.com/?apiref=390cac5ce90ab221
+          "></div>
         </div>
         <div class="col-xs-4" id="pow_factor">
-          <h2>Powder Rating</h2>
-          <h2 id="rating">IMPORTANT NUMBER</h2>
-          <h2 id="quote">Awesome Quote</h2>
+          <h2>Powder Index out of 100</h2>
+          <h2 id="rating">Powder Rating:</h2>
+          <h2 id="quote"></h2>
         </div>
         <div class="col-xs-3" id="resort_list">
-          <h3>Resort List</h3>
+          <h2>Resorts</h2>
         </div>
       </div>
 
