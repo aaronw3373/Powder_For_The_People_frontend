@@ -38,7 +38,8 @@ function quote(rating,month){
 //gives user these commands as click handlers
 function CRUDPRIV(){
   $('#create_crud').on('click', function(){
-    createResortAjax(getCRUDData());
+    var c_json = getCRUDData()
+    createResortAjax(c_json);
     loadResortsAjax();
   });
   $('#read_crud_ID').on('click', function(){
