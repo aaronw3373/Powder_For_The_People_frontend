@@ -1,3 +1,4 @@
+/*Over all*/
 body{
   min-width: 800px;
   min-height:500px;
@@ -11,6 +12,8 @@ width: 100%;
 margin:0;
 padding: 0;
 }
+
+/*Header*/
 #header{
   padding-bottom: 10px;
 }
@@ -31,10 +34,16 @@ padding: 0;
   text-align: right;
   padding-right: 30px;
 }
+
+/*About Search Login bar*/
+#about_search_login{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 4px solid #336699;
+  border-bottom: 4px solid #336699;
+}
 input{
   height: 4vw;
-  width 80
-  float: right;
 }
 #about_button{
   padding-left: 50px;
@@ -50,29 +59,29 @@ input{
   max-height: 40px;
   min-height: 24px;
 }
-#login{
-}
-#login_button{
-  width: 15%;
+#login_button, #signUp_button{
+  width: 12%;
   max-height: 40px;
   min-height: 24px;
 }
-#psw{
-  width: 40%;
+#psw, #usn{
+  width: 32%;
   max-height: 40px;
   min-height: 24px;
 }
-#usn{
-  width: 40%;
-  max-height: 40px;
+
+/*Main div where the content and fun stuff happens*/
+/*Super User div*/
+.crud{
+  margin-top: 20px;
+  width: 18%;
   min-height: 24px;
 }
-#about_search_login{
-  padding-top: 20px;
-  padding-bottom: 20px;
-  border-top: 4px solid #336699;
-  border-bottom: 4px solid #336699;
+.crud_form{
+  width:15%;
+  min-height: 24px;
 }
+/*left column resort info*/
 #resort_info{
   height: calc(91vh - 10vw);
   margin: 0;
@@ -91,12 +100,14 @@ input{
   height:150px;
   width:250px;
 }
+/*Middle column powfactor*/
 #pow_factor{
   border-right: 4px solid #336699;
   height: calc(91vh - 10vw);
   margin: 0;
   padding:20px;
 }
+/*right column resort list*/
 #resort_list{
   height: calc(91vh - 10vw);
   margin: 0;
