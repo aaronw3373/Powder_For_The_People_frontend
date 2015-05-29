@@ -151,7 +151,7 @@ $(document).ready(function() {
 
   //login button on click with hard coded admin used info to CRUD
   $('#login_button').on('click', function(){
-    if ($('#usn').val() === "aaronw3373" && $('#psw').val() === "password1"){
+    if ($('#usn').val() === "aaronw3373" && $('#psw').val() === "123"){
       console.log("loged in as super user");
       $('#super_div').toggle()
       $('#resort_info').toggle()

@@ -3,17 +3,13 @@
 //START Resort section
 //
 
-//
 //VARIABLES for resorts api calls
-//
-
 var resort_index = "http://localhost:5000/resorts"
 var resort_show = "http://localhost:5000/resorts/"
 var resort_name = "http://localhost:5000/resortsname?name="
 
-//
+
 //AJAX FUNCTIONS for resorts
-//
 
 //create resort ajax call
 function createResortAjax(c_json){
@@ -59,9 +55,8 @@ function deleteResortAjax(path){
   })
 }
 
-//
 //Ajax GET requests
-//
+
 // get index of resort list and populate resort_list div
 function loadResortsAjax(){
   $('#resort_list').html('<h2> Resorts</h2>');
@@ -118,10 +113,6 @@ function searchAndShowResort(searchAPI,user){
     console.log("error");
   })
 }
-
-
-
-
 
 //
 //END Resort section
