@@ -44,10 +44,20 @@
         <div class="col-xs-6" id="login">
           <form>
             <input type="text" name="username" placeholder=" username" id="usn">
-            <input type="password" name="psw" placeholder=" password" id="psw">
-            <input type="submit" value="Sign In" id="login_button">
-            <input type="submit" value="Sign Up" id="signUp_button">
+            <input type="password" name="password" placeholder=" password" id="psw">
+            <input type="submit" value="Sign in" id="login_button">
+            <input type="submit" value="Sign up" id="signUp_button">
           </form>
+        </div>
+        <div class="col-xs-6" id="logged_in" style= "display:none">
+          <h4></h4>
+          <input type="submit" value="Sign out" id="logout_button">
+        </div>
+        <div class="col-xs-6" id="signUp" style= "display:none">
+          <input type="text" name="name" placeholder=" first name" id="new_fname">
+          <input type="text" name="username" placeholder=" username" id="new_username">
+          <input type="password" name="password" placeholder=" password" id="new_password">
+          <input type="submit" value="Sign up" id="new_signup">
         </div>
       </div>
 
@@ -55,18 +65,17 @@
         <div class="col-xs-9" id="super_div" style= "display:none">
           <div class="row">
             <h1>CRUD Resorts</h1>
-            <input class="crud_form" type="integer" id="ID_crud" placeholder="ID">
+            <input class="crud_form" type="integer" id="ID_crud" placeholder="ID (read & update only)">
             <input class="crud_form" type="text" id="name_crud" placeholder="name">
             <input class="crud_form" type="integer" id="vertical_crud" placeholder="vertical">
             <input class="crud_form" type="integer" id="acres_crud" placeholder="acres">
-            <input class="crud_form" type="text" id="state_crud" placeholder="state">
             <input class="crud_form" type="text" id="location_crud" placeholder="location">
             <br>
-            <input class="crud" type="submit" value="Create" id="create_crud">
-            <input class="crud" type="submit" value="Read ID" id="read_crud_ID">
-            <input class="crud" type="submit" value="Read Name" id="read_crud_name">
-            <input class="crud" type="submit" value="Update" id="update_crud">
-            <input class="crud" type="submit" value="Destroy" id="destroy_crud">
+            <input class="crud" type="submit" value="CREATE" id="create_crud">
+            <input class="crud" type="submit" value="READ by ID" id="read_crud_ID">
+            <input class="crud" type="submit" value="READ by Name" id="read_crud_name">
+            <input class="crud" type="submit" value="UPDATE by ID" id="update_crud">
+            <input class="crud" type="submit" value="DESTROY by name" id="destroy_crud">
           </div>
           <div class="row" id="resorts_info_admin">
           </div>

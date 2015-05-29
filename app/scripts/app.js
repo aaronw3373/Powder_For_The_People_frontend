@@ -73,11 +73,9 @@ function getCRUDData(){
   c_vertical = Number(c_vertical)
   var c_acres = $('#acres_crud').val()
   c_acres = Number(c_acres)
-  var c_state = $('#state_crud').val()
-  c_state = c_state.toUpperCase()
   var c_location = $('#location_crud').val()
-  c_location = c_location.replace(/ /g,"_");
-  var c_json = {"resort":{"name":c_name,"vertical":c_vertical, "acres":c_acres,"state":c_state,"location":c_location}}
+  c_location = "pws:" + c_location
+  var c_json = {"resort":{"name":c_name,"vertical":c_vertical, "acres":c_acres,"location":c_location}}
   return c_json;
 }
 
@@ -97,7 +95,7 @@ function renderShowResort(data,weather){
 
 //render response on superuser page
 function renderShowResortAdmin(data,weather){
-  $('#resorts_info_admin').html("<h3>"+ "ID: " +data.id+ " name: "+ data.name + " vertical: " + data.vertical +" acres: "+ data.acres + " state: " + data.state + " location: " + data.location + "</h3>");
+  $('#resorts_info_admin').html("<h3>"+ "ID: " +data.id+ " name: "+ data.name + " vertical: " + data.vertical +" acres: "+ data.acres + " location: " + data.location + "</h3>");
 }
 
 //render response to resort list
@@ -158,6 +156,11 @@ $(document).ready(function() {
       $('#pow_factor').toggle()
       CRUDPRIV();
     }
+    return false;
+  });
+  $('#signUp_button').on('click',function(){
+    $('#login').hide();
+    $('#signUp').show();
     return false;
   });
 

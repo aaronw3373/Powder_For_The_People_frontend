@@ -69,6 +69,16 @@ input{
   max-height: 40px;
   min-height: 24px;
 }
+#new_fname, #new_username, #new_password{
+  width: 28%;
+  max-height: 40px;
+  min-height: 24px;
+}
+#new_signup{
+  width: 11%;
+  max-height: 40px;
+  min-height: 24px;
+}
 
 /*Main div where the content and fun stuff happens*/
 /*Super User div*/
@@ -78,12 +88,12 @@ input{
   min-height: 24px;
 }
 .crud_form{
-  width:15%;
+  width:18%;
   min-height: 24px;
 }
 /*left column resort info*/
 #resort_info{
-  height: calc(91vh - 10vw);
+  height: calc(91vh - 9vw);
   margin: 0;
   padding:20px;
 }
@@ -94,7 +104,7 @@ input{
   font-size: 40px;
 }
 #wunderground{
-  margin-top: 300px;
+  margin-top: 200px;
   background: url(../images/wundergroundLogo_4c_horz.jpg) no-repeat;
   background-size: contain;
   height:150px;
@@ -103,13 +113,13 @@ input{
 /*Middle column powfactor*/
 #pow_factor{
   border-right: 4px solid #336699;
-  height: calc(91vh - 10vw);
+  height: calc(91vh - 9vw);
   margin: 0;
   padding:20px;
 }
 /*right column resort list*/
 #resort_list{
-  height: calc(91vh - 10vw);
+  height: calc(91vh - 9vw);
   margin: 0;
   padding: 20px;
 }
