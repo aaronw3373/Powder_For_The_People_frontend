@@ -44,13 +44,13 @@ function CRUDPRIV(){
   });
   $('#read_crud_ID').on('click', function(){
     c_json = getCRUDData()
-    var dbID = $('#ID_crud').val()
-    showResortAjax(dbID,"admin")
+    var path = (resort_show + $('#ID_crud').val())
+    showResortAjax(path,"admin")
   });
   $('#read_crud_name').on('click', function(){
     c_json = getCRUDData()
-    var searchAPI = resort_name + c_json.resort.name
-    searchAndShowResort(searchAPI,"admin")
+    var path = resort_name + c_json.resort.name
+    showResortAjax(path,"admin")
   });
   $('#update_crud').on('click', function(){
     var id = $('#ID_crud').val()
@@ -59,7 +59,13 @@ function CRUDPRIV(){
     updateResortAjax(updateAPI,c_json);
     loadResortsAjax();
   });
-  $('#destroy_crud').on('click', function(){
+  $('#destroy_crud_id').on('click', function(){
+    c_json = getCRUDData()
+    var deleteAPI = (resort_show + $('#ID_crud').val())
+    deleteResortAjax(deleteAPI);
+    loadResortsAjax();
+  });
+  $('#destroy_crud_name').on('click', function(){
     c_json = getCRUDData()
     var deleteAPI = resort_name + c_json.resort.name
     deleteResortAjax(deleteAPI);
@@ -104,7 +110,50 @@ function appendResortList(resort){
   $('#resort_list').append("<h3 class='resort' id=" + "resort" +resort.id + ">" + resort.name + "</h3>");
 }
 
+//new user sign up
+function createUser(){
+  var info = getUserInfo();
+  if (info.user.name === "" || info.user.username === ""){
+    alert("Must enter a Name, Username and Password")
+  }else{
+  createUserAjax(info);
+  }
+}
 
+//get user input for signing up
+function getUserInfo(){
+  var f_name = $('#new_fname').val();
+  var u_name = $('#new_username').val();
+  var info = {"user":{"name":f_name,"username":u_name,"privileges":"none"}}
+  return info;
+}
+
+function isUserGod(data){
+  if (data.privileges === "god"){
+    $('#loggin').hide()
+    $('#logged_in').show()
+    $('#logged_in_name').html("Welcome " + data.name)
+    console.log("loged in as God");
+    $('#super_div').toggle()
+    $('#resort_info').toggle()
+    $('#pow_factor').toggle()
+    CRUDPRIV();
+  }
+}
+function isUserAdmin(data){
+  if (data.privileges === "admin"){
+    $('#loggin').hide()
+    $('#logged_in').show()
+    $('#logged_in_name').html("Welcome " + data.name)
+  }
+}
+function isUser(data){
+  if (data.privileges === "none"){
+    $('#loggin').hide()
+    $('#logged_in').show()
+    $('#logged_in_name').html("Welcome " + data.name)
+  }
+}
 
 //
 //RUN TIME
@@ -121,17 +170,14 @@ $(document).ready(function() {
 
   //resort list click to show resort
   $('#resort_list').on('click', '.resort', function(event){
-    var dbID = parseInt(event.target.id.substring(6));
-    showResortAjax(dbID,"none");
+    var path = (resort_show + parseInt(event.target.id.substring(6)));
+    showResortAjax(path,"none");
   });
 
   //search bar on search_utton click
   $('#search_button').on('click', function(){
-    console.log("search");
-    var search = $('#search_box').val()
-
-    var searchAPI = (resort_name + search)
-    searchAndShowResort(searchAPI,"none");
+    var path = (resort_name + $('#search_box').val())
+    showResortAjax(path,"none");
     return false;
   });
 
@@ -150,21 +196,35 @@ $(document).ready(function() {
 
   //login button on click with hard coded admin used info to CRUD
   $('#login_button').on('click', function(){
-    if ($('#usn').val() === "aaronw3373" && $('#psw').val() === "123"){
-      console.log("loged in as super user");
-      $('#super_div').toggle()
-      $('#resort_info').toggle()
-      $('#pow_factor').toggle()
-      CRUDPRIV();
+    var username = $('#usn').val()
+    var password = $('#psw').val()
+    var path = (user_name + username)
+    //replace true in the if statement with the authenticator
+    if(true){
+      showUserAjax(path);
+      console.log("logging in")
+    }else{
+      alert("username or password incorrect");
     }
     return false;
   });
+
+  //sign up click to sign up
   $('#signUp_button').on('click',function(){
-    $('#login').hide();
+    $('#loggin').hide();
     $('#signUp').show();
     return false;
   });
 
+  //sign up submit
+  $('#new_signup').on('click', function(){
+    createUser();
+  });
+
+  $('#logout_button').on('click',function(){
+    console.log("logging out");
+    location.reload();
+  });
 });
 
 

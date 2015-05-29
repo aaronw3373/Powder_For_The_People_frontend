@@ -59,6 +59,16 @@ input{
   max-height: 40px;
   min-height: 24px;
 }
+#logged_in_name{
+  font-size: 2vw;
+  margin-left:20%;
+}
+#logout_button{
+  width: 20%;
+  max-height: 40px;
+  min-height: 24px;
+  float:right;
+}
 #login_button, #signUp_button{
   width: 12%;
   max-height: 40px;
@@ -84,7 +94,7 @@ input{
 /*Super User div*/
 .crud{
   margin-top: 20px;
-  width: 18%;
+  width: 15%;
   min-height: 24px;
 }
 .crud_form{

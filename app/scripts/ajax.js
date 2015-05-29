@@ -25,7 +25,7 @@ function createResortAjax(c_json){
     console.log("error");
   })
 }
-//update resort ajax call
+//update resort ajax call by id
 function updateResortAjax(path,c_json){
   $.ajax({
     url: path,
@@ -40,7 +40,7 @@ function updateResortAjax(path,c_json){
     console.log("error");
   })
 }
-//delete resort ajax call
+//delete resort ajax call by path
 function deleteResortAjax(path){
   $.ajax({
     url: path,
@@ -75,10 +75,10 @@ function loadResortsAjax(){
   })
 }
 
-//get resort Ajax call by ID
-function showResortAjax(dbID,user){
+//get resort by path
+function showResortAjax(path,user){
   $.ajax({
-    url: (resort_show + dbID),
+    url: path,
     type: 'GET',
     dataType: 'json'
   })
@@ -93,33 +93,52 @@ function showResortAjax(dbID,user){
     console.log("error");
   })
 }
-
-//get ajax call by name
-function searchAndShowResort(searchAPI,user){
-  $.ajax({
-    url: searchAPI,
-    type: 'GET',
-    dataType: 'json'
-  })
-  .done(function(data) {
-    if (user === "none"){
-      renderShowResort(data.resort,data.weather);
-    }else if (user==="admin"){
-      renderShowResortAdmin(data.resort,data.weather);
-    }
-  })
-  .fail(function() {
-    console.log("error");
-  })
-}
-
 //
 //END Resort section
 //
 //START User section
 //
 
+//Variables for user calls
+var user_index = "http://localhost:5000/users"
+var user_show = "http://localhost:5000/users/"
+var user_name = "http://localhost:5000/usersname?username="
 
+//createnew user
+function createUserAjax(info){
+  $.ajax({
+      url: user_index,
+      type: 'POST',
+      dataType: 'json',
+      data: info
+    })
+    .done(function() {
+      console.log("Created");
+      location.reload();
+    })
+    .fail(function() {
+      console.log("error");
+      alert("Username Unavailable")
+    })
+}
+
+//get user on login by username
+function showUserAjax(path){
+  $.ajax({
+    url: path,
+    type: 'GET',
+    dataType: 'json'
+  })
+  .done(function(data) {
+    isUserGod(data);
+    isUserAdmin(data);
+    isUser(data);
+  })
+  .fail(function() {
+    console.log("Failure");
+    location.reload();
+  })
+}
 
 
 //
