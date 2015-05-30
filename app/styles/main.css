@@ -103,7 +103,7 @@ input{
 }
 /*left column resort info*/
 #resort_info{
-  height: calc(91vh - 9vw);
+  height: 250px;
   margin: 0;
   padding:20px;
 }
@@ -114,7 +114,7 @@ input{
   font-size: 40px;
 }
 #wunderground{
-  margin-top: 200px;
+  margin-top: 300px;
   background: url(../images/wundergroundLogo_4c_horz.jpg) no-repeat;
   background-size: contain;
   height:150px;
@@ -129,7 +129,6 @@ input{
 }
 /*right column resort list*/
 #resort_list{
-  height: calc(91vh - 9vw);
   margin: 0;
   padding: 20px;
 }

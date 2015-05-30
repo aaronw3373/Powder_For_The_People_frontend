@@ -58,7 +58,7 @@ function deleteResortAjax(path){
 
 // get index of resort list and populate resort_list div
 function loadResortsAjax(){
-  $('#resort_list').html('<h2> Resorts</h2>');
+  $('#full_list').html('<h2> Resorts</h2>');
   $.ajax({
     url: resort_index,
     type: 'GET',
@@ -86,7 +86,10 @@ function showResortAjax(path,user){
     if (user === "none"){
       renderShowResort(data.resort,data.weather);
     }else if (user==="admin"){
-      renderShowResortAdmin(data.resort,data.weather);
+      renderShowResortAdmin(data.resort);
+    }
+    else if (user==="favorite"){
+      renderFavorite(data.resort)
     }
   })
   .fail(function() {
@@ -113,12 +116,11 @@ function createUserAjax(info){
       data: info
     })
     .done(function() {
-      console.log("Created");
-      location.reload();
+      $('#signUp').hide();
+      $('#loggin').show();
     })
     .fail(function() {
       console.log("error");
-      alert("Username Unavailable")
     })
 }
 
@@ -134,13 +136,54 @@ function showUserAjax(path){
     isUserAdmin(data);
     isUser(data);
   })
-  .fail(function() {
-    console.log("Failure");
-    location.reload();
+  .fail(function(data) {
+    console.log(data);
   })
 }
 
 
 //
 //END User section
+//
+
+//
+//START favorite section
+//
+
+var favorite_index = "http://localhost:5000/favorites"
+var favorite_show = "http://localhost:5000/favorites/"
+
+function createFavoriteAjax(data){
+  $.ajax({
+    url: favorite_index,
+    type: 'POST',
+    dataType: 'json',
+    data: data,
+  })
+  .done(function() {
+    console.log("Created Favorite");
+  })
+  .fail(function() {
+    console.log("error");
+  })
+}
+
+function showFavoriteOfUserAjax(path){
+  $.ajax({
+    url: path,
+    type: 'GET',
+    dataType: 'json'
+  })
+  .done(function(data) {
+    data.forEach(function(resort){
+      callFavorite(resort);
+    });
+  })
+  .fail(function() {
+    console.log("error");
+  })
+}
+
+//
+//END favorite section
 //

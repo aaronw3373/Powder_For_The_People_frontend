@@ -1,3 +1,5 @@
+var userUID;
+
 //The magic algorithm woah...
 function rating(vertical,acres,snowfall){
   return Math.round(((2000 + vertical + acres)/500)*(1+snowfall));
@@ -92,12 +94,11 @@ function getCRUDData(){
 //render response for normal user
 function renderShowResort(data,weather){
   var date = new Date();
-  $('#resort_name').html(data.name);
-  $('#vertical').html("Vertical Feet: " + data.vertical);
-  $('#acres').html("Skiable Acres: " + data.acres);
+  $('#resort_info').html("<h2 id=" + "favorite" +data.id + ">" + data.name + "</h2>" + "<h4 id='vertical'>Vertical Feet: " + data.vertical + "</h4>" +   "<h4 id='acres'>Skiable Acres: " + data.acres + "</h4>" + "<h4 id='current_temp_f'>Temp: " + weather.current_observation.temp_f + " ℉ </h4>");
+  $('#favorite_button').show();
+  $('#wunderground').show();
   $('#rating').html("Powder Index: " + (rating(data.vertical,data.acres,0)));
   $('#quote').html(quote(rating(data.vertical,data.acres),parseInt(date.getMonth()),0));
-  $('#current_temp_f').html("Temp: " + weather.current_observation.temp_f + " ℉");
 }
 
 //render response on superuser page
@@ -107,7 +108,8 @@ function renderShowResortAdmin(data,weather){
 
 //render response to resort list
 function appendResortList(resort){
-  $('#resort_list').append("<h3 class='resort' id=" + "resort" +resort.id + ">" + resort.name + "</h3>");
+  var name = resort.name.replace(/ /g,"%20");
+  $('#full_list').append("<h3 class='resort' id=" + "resort" + name + ">" + resort.name + "</h3>");
 }
 
 //new user sign up
@@ -124,7 +126,8 @@ function createUser(){
 function getUserInfo(){
   var f_name = $('#new_fname').val();
   var u_name = $('#new_username').val();
-  var info = {"user":{"name":f_name,"username":u_name,"privileges":"none"}}
+  var password = $('#new_password').val();
+  var info = {"user":{"name":f_name,"username":u_name, "password":password ,"privileges":"none"}}
   return info;
 }
 
@@ -137,6 +140,7 @@ function isUserGod(data){
     $('#super_div').toggle()
     $('#resort_info').toggle()
     $('#pow_factor').toggle()
+    userUID = data.id
     CRUDPRIV();
   }
 }
@@ -145,6 +149,7 @@ function isUserAdmin(data){
     $('#loggin').hide()
     $('#logged_in').show()
     $('#logged_in_name').html("Welcome " + data.name)
+    userUID = data.id
   }
 }
 function isUser(data){
@@ -152,8 +157,35 @@ function isUser(data){
     $('#loggin').hide()
     $('#logged_in').show()
     $('#logged_in_name').html("Welcome " + data.name)
+    userUID = data.id
+    showFavoriteOfUser(userUID);
   }
 }
+
+
+function createFavorite(resortID,userUID){
+  var data = {"favorite":{"user":userUID,"resort":resortID}}
+  createFavoriteAjax(data);
+}
+
+function showFavoriteOfUser(userID){
+  var path = (favorite_show + userID)
+  showFavoriteOfUserAjax(path)
+}
+
+function callFavorite(data){
+  var path = resort_show + data.resort
+  showResortAjax(path,"favorite")
+}
+
+function renderFavorite(data){
+  var name = data.name.replace(/ /g,"%20");
+  $('#favorite_list').append("<h3 class='resort' id=" + "favorite" + name + ">" + data.name + "</h3>");
+}
+
+
+
+
 
 //
 //RUN TIME
@@ -165,18 +197,20 @@ function isUser(data){
 
 
 $(document).ready(function() {
-  //poulate resort_list div
+  //poulate full_list div
   loadResortsAjax();
 
   //resort list click to show resort
-  $('#resort_list').on('click', '.resort', function(event){
-    var path = (resort_show + parseInt(event.target.id.substring(6)));
+  $('#full_list').on('click', '.resort', function(event){
+    var path = (resort_name + event.target.id.substring(6));
+    console.log(path);
     showResortAjax(path,"none");
   });
 
   //search bar on search_utton click
   $('#search_button').on('click', function(){
     var path = (resort_name + $('#search_box').val())
+    console.log(path);
     showResortAjax(path,"none");
     return false;
   });
@@ -191,7 +225,30 @@ $(document).ready(function() {
   //Click wunderground logo takes you to wunderground site
   $('#wunderground').on('click',function(){
     window.open("http://www.wunderground.com/?apiref=390cac5ce90ab221");
+  });
 
+  //favorite resort button
+  $('#favorite_button').on('click',function(){
+    var resortID = $('#resort_info h2').attr('id');
+    resortID = resortID.substring(8)
+    var userID = userUID;
+    createFavorite(resortID,userID)
+  })
+
+  $('#favorite_list_button').on('click',function(){
+    $('#full_list').hide()
+    $('#favorite_list').show()
+  });
+
+  $('#resort_list_button').on('click',function(){
+    $('#favorite_list').hide()
+    $('#full_list').show()
+  });;
+
+  $('#favorite_list').on('click', '.resort', function(event){
+    var path = (resort_name + event.target.id.substring(8));
+    console.log(path);
+    showResortAjax(path,"none");
   });
 
   //login button on click with hard coded admin used info to CRUD
@@ -199,6 +256,7 @@ $(document).ready(function() {
     var username = $('#usn').val()
     var password = $('#psw').val()
     var path = (user_name + username)
+    //var data = {"user":{"username":username,"password":password}}
     //replace true in the if statement with the authenticator
     if(true){
       showUserAjax(path);
@@ -221,6 +279,7 @@ $(document).ready(function() {
     createUser();
   });
 
+  //logout button
   $('#logout_button').on('click',function(){
     console.log("logging out");
     location.reload();
