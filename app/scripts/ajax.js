@@ -58,7 +58,7 @@ function deleteResortAjax(path){
 
 // get index of resort list and populate resort_list div
 function loadResortsAjax(){
-  $('#full_list').html('<h2> Resorts</h2>');
+  // $('#full_list').html('<h2> Resorts</h2>');
   $.ajax({
     url: resort_index,
     type: 'GET',

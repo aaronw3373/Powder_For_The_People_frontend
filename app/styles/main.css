@@ -63,12 +63,13 @@ input{
   font-size: 2vw;
   margin-left:20%;
 }
-#logout_button{
+#logout_button, #toggle_privileges_button{
   width: 20%;
   max-height: 40px;
   min-height: 24px;
   float:right;
 }
+
 #login_button, #signUp_button{
   width: 12%;
   max-height: 40px;
@@ -120,6 +121,9 @@ input{
   height:150px;
   width:250px;
 }
+#favorite_button #un_favorite_button{
+  height: 50px;
+}
 /*Middle column powfactor*/
 #pow_factor{
   border-right: 4px solid #336699;
@@ -131,4 +135,7 @@ input{
 #resort_list{
   margin: 0;
   padding: 20px;
+}
+#favorite_list_button, #resort_list_button{
+  font-size: 2vw;
 }
