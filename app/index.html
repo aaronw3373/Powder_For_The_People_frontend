@@ -83,10 +83,28 @@
           <div class="row" id="resorts_info_admin">
           </div>
           <div class="row">
+            <h1>Destroy Users</h1>
+            <input class="crud_form" type="integer" id="User_ID_crud" placeholder="ID">
+            <input class="crud_form" type="text" id="User_priv_crud" placeholder="privileges">
+            <br>
+            <input class="crud" type="submit" value="DESTROY by ID" id="User_destroy_crud_id">
+            <!-- <input class="crud" type="submit" value="READ by ID" id="User_read_crud_ID"> -->
+            <input class="crud" type="submit" value="UPDATE by ID" id="User_update_crud">
           </div>
         </div>
 
-        <div class="col-xs-5" id="resort_column">
+        <div class="col-xs-9" id="about_page">
+          <h1>About Powder For The People</h1>
+          <br>
+          <h2>
+          We at powder for the poeple give you the information you care about when deciding where to shred.
+          </h2>
+          <h2>
+          Please either sign in sign up or click a resort to get started
+          </h2>
+        </div>
+
+        <div class="col-xs-5" id="resort_column" style= "display:none">
           <div id="resort_info">
           </div>
           <div class="row" id="favorite_button_div" style= "display:none">
@@ -97,11 +115,13 @@
           " style= "display:none"></div>
         </div>
 
-        <div class="col-xs-4" id="pow_factor">
-          <h2>Powder Index out of 100</h2>
-          <h2 id="rating">Powder Index:</h2>
-          <br>
+        <div class="col-xs-4" id="pow_factor" style= "display:none">
+          <div id="pow_factor_info" style= "display:none">
+            <h2>Powder Index out of 100</h2>
+            <h2 id="rating">Powder Index:</h2>
+            <br>
           <h2 id="quote"></h2>
+          </div>
         </div>
         <div class="col-xs-3" id="resort_list">
           <div class = "row">

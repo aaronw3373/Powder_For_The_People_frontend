@@ -45,34 +45,48 @@ function CRUDPRIV(){
     loadResortsAjax();
   });
   $('#read_crud_ID').on('click', function(){
-    c_json = getCRUDData()
+    var c_json = getCRUDData()
     var path = (resort_show + $('#ID_crud').val())
     showResortAjax(path,"admin")
   });
   $('#read_crud_name').on('click', function(){
-    c_json = getCRUDData()
+    var c_json = getCRUDData()
     var path = resort_name + c_json.resort.name
     showResortAjax(path,"admin")
   });
   $('#update_crud').on('click', function(){
     var id = $('#ID_crud').val()
-    c_json = getCRUDData()
+    var c_json = getCRUDData()
     var updateAPI = resort_show + id
     updateResortAjax(updateAPI,c_json);
     loadResortsAjax();
   });
   $('#destroy_crud_id').on('click', function(){
-    c_json = getCRUDData()
+    var c_json = getCRUDData()
     var deleteAPI = (resort_show + $('#ID_crud').val())
     deleteResortAjax(deleteAPI);
     loadResortsAjax();
   });
   $('#destroy_crud_name').on('click', function(){
-    c_json = getCRUDData()
+    var c_json = getCRUDData()
     var deleteAPI = resort_name + c_json.resort.name
     deleteResortAjax(deleteAPI);
     loadResortsAjax();
   });
+
+  $('#User_destroy_crud_id').on('click', function(){
+    var user = $('#User_ID_crud').val()
+    var path = user_show + user
+    destroyUserAjax(path);
+  });
+
+  $('#User_update_crud').on('click', function(){
+    var user = $('#User_ID_crud').val()
+    var path = user_show + user
+    var privileges = $('#User_priv_crud').val()
+    var c_json = {"user":{"privileges":privileges}}
+    updateUserAjax(path,c_json);
+  })
 }
 
 //retrieve CRUD data form info and return a json with it
@@ -115,7 +129,7 @@ function appendResortList(resort){
 //new user sign up
 function createUser(){
   var info = getUserInfo();
-  if (info.user.name === "" || info.user.username === ""){
+  if (info.user.name === "" || info.user.username === "" || info.user.password === ""){
     alert("Must enter a Name, Username and Password")
   }else{
   createUserAjax(info);
@@ -140,6 +154,7 @@ function isUserGod(data){
     $('#toggle_privileges_button').show()
     $('#resort_column').hide()
     $('#pow_factor').hide()
+    $('#about_page').hide()
     $('#super_div').show()
     $('#favorite_list_button').show()
     $('#favorite_button_div').show()
@@ -177,8 +192,9 @@ function createFavorite(resortID,userUID){
 }
 
 function destroyFavorite(resortID,userUID){
-  var data = {"favorite":{"user":userUID,"resort":resortID}}
+  var path = favorite_show + userUID + "/"+ resortID
   destroyFavoriteAjax(path);
+  showFavoriteOfUser(userUID);
 }
 
 function showFavoriteOfUser(userID){
@@ -217,6 +233,12 @@ $(document).ready(function() {
   //resort list click to show resort
   $('#full_list').on('click', '.resort', function(event){
     var path = (resort_name + event.target.id.substring(6));
+    $('#about_page').hide()
+    $('#super_div').hide()
+    showResortAjax(path,"none");
+    $('#resort_column').show()
+    $('#pow_factor').show()
+    $('#pow_factor_info').show()
     if (userUID === undefined){
       $('#favorite_button').hide()
        $('#un_favorite_button').hide()
@@ -225,27 +247,41 @@ $(document).ready(function() {
       $('#favorite_button').show()
       $('#un_favorite_button').hide()
     }
-    showResortAjax(path,"none");
   });
 
   $('#favorite_list').on('click', '.resort', function(event){
     var path = (resort_name + event.target.id.substring(8));
-    $('#un_favorite_button').show()
-     $('#favorite_button').hide()
+    $('#about_page').hide()
+    $('#super_div').hide()
+    $('#favorite_button').hide()
     showResortAjax(path,"none")
+    $('#resort_column').show()
+    $('#pow_factor').show()
+    $('#pow_factor_info').show()
+    $('#un_favorite_button').show()
   });
 
   //search bar on search_utton click
   $('#search_button').on('click', function(){
     var path = (resort_name + $('#search_box').val())
-    console.log(path);
+    $('#about_page').hide()
+    $('#super_div').hide()
     showResortAjax(path,"none");
+    if (userUID !== undefined){
+      $('#favorite_button').show()
+    }
+    $('#resort_column').show()
+    $('#pow_factor').show()
+    $('#pow_factor_info').show()
     return false;
   });
 
   //about_button on click
   $('#about_button').on('click', function(){
-    console.log("about click");
+    $('#resort_column').hide()
+    $('#pow_factor').hide()
+    $('#super_div').hide()
+    $('#about_page').show()
     //slide onto div row main a short about_page for the app and how/why
     //make so clicking anything else hides the about_page
   });
@@ -274,9 +310,8 @@ $(document).ready(function() {
     var resortID = $('#resort_info h2').attr('id');
     resortID = resortID.substring(8)
     var userID = userUID;
-    console.log(resortID);
-    console.log(userID);
     destroyFavorite(resortID,userID)
+    $('#favorite_list').html("")
     showFavoriteOfUser(userUID);
   })
 
@@ -284,6 +319,7 @@ $(document).ready(function() {
   $('#favorite_list_button').on('click',function(){
     $('#full_list').hide()
     $('#favorite_list').show()
+    showFavoriteOfUser(userUID);
   });
 
   //resort header to display list
@@ -323,6 +359,10 @@ $(document).ready(function() {
   //logout button
   $('#logout_button').on('click',function(){
     console.log("logging out");
+    location.reload();
+  });
+
+  $('#header').on('click',function(){
     location.reload();
   });
 });

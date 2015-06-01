@@ -141,6 +141,34 @@ function showUserAjax(path){
   })
 }
 
+function updateUserAjax(path,c_json){
+  $.ajax({
+    url: path,
+    type: 'PATCH',
+    dataType: 'json',
+    data: c_json
+  })
+  .done(function() {
+    console.log("Updated");
+  })
+  .fail(function() {
+    console.log("error");
+  })
+}
+
+function destroyUserAjax(path){
+  $.ajax({
+    url: path,
+    type: 'DELETE'
+  })
+  .done(function() {
+    console.log("successful delete user");
+  })
+  .fail(function() {
+    console.log("error");
+  })
+
+}
 
 //
 //END User section
@@ -184,6 +212,19 @@ function showFavoriteOfUserAjax(path){
   })
 }
 
+function destroyFavoriteAjax(path){
+  $.ajax({
+    url: path,
+    type: 'DELETE'
+  })
+  .done(function() {
+    console.log("successful delete");
+  })
+  .fail(function() {
+    console.log("error");
+  })
+
+}
 //
 //END favorite section
 //
