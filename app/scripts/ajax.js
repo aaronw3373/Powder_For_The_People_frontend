@@ -20,6 +20,7 @@ function createResortAjax(c_json){
   })
   .done(function() {
     console.log("Created");
+    loadResortsAjax();
   })
   .fail(function() {
     console.log("error");
@@ -35,6 +36,7 @@ function updateResortAjax(path,c_json){
   })
   .done(function() {
     console.log("Updated");
+    loadResortsAjax();
   })
   .fail(function() {
     console.log("error");
@@ -48,17 +50,22 @@ function deleteResortAjax(path){
   })
   .done(function() {
     console.log("Deleted");
+    loadResortsAjax();
   })
   .fail(function() {
     console.log("error");
   })
 }
 
-//Ajax GET requests
+//Ajax GET request
 
 // get index of resort list and populate resort_list div
 function loadResortsAjax(){
   // $('#full_list').html('<h2> Resorts</h2>');
+  shortestDistance = 100000;
+  sortlist = [];
+  $('#full_list').html("")
+  $('#closest_list').html("")
   $.ajax({
     url: resort_index,
     type: 'GET',
@@ -69,6 +76,9 @@ function loadResortsAjax(){
     data.forEach(function(resort){
       appendResortList(resort);
     });
+    numSorter(sortlist).forEach(function(resort){
+      appendClosestList(resort)
+    })
   })
   .fail(function() {
     console.log("error");

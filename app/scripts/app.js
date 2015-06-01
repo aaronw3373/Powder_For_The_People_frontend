@@ -1,4 +1,11 @@
+var shortestDistance;
+var sortlist;
 var userUID;
+var lat1;
+var lon1;
+var lat2;
+var lon2;
+
 
 //The magic algorithm woah...
 function rating(vertical,acres,snowfall){
@@ -36,13 +43,53 @@ function quote(rating,month){
   }
 };
 
+var zeta = document.getElementById("Ulocation");
+var delta = document.getElementById("URdistance");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        zeta.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    lat1 = position.coords.latitude
+    lon1 = position.coords.longitude
+}
+getLocation();
+
+
+function calcDistance(){
+  function toRad(num){
+    return num * (Math.PI / 180);
+  }
+  var Eradius = 6371; // kilometers
+  var φ1 = toRad(lat1);
+  var φ2 = toRad(lat2);
+  var Δφ = toRad((lat2-lat1));
+  var Δλ = toRad((lon2-lon1));
+
+  var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
+          Math.cos(φ1) * Math.cos(φ2) *
+          Math.sin(Δλ/2) * Math.sin(Δλ/2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+  var d = Eradius * c;
+  var miles = Math.round(d * 0.621371)
+  return miles
+}
+
+function showDistance(){
+  delta.innerHTML = "Distance: " + calcDistance() + " miles"
+}
 //Allow CRUD privileges when logged in as super user
 //gives user these commands as click handlers
 function CRUDPRIV(){
   $('#create_crud').on('click', function(){
     var c_json = getCRUDData()
     createResortAjax(c_json);
-    loadResortsAjax();
   });
   $('#read_crud_ID').on('click', function(){
     var c_json = getCRUDData()
@@ -59,19 +106,16 @@ function CRUDPRIV(){
     var c_json = getCRUDData()
     var updateAPI = resort_show + id
     updateResortAjax(updateAPI,c_json);
-    loadResortsAjax();
   });
   $('#destroy_crud_id').on('click', function(){
     var c_json = getCRUDData()
     var deleteAPI = (resort_show + $('#ID_crud').val())
     deleteResortAjax(deleteAPI);
-    loadResortsAjax();
   });
   $('#destroy_crud_name').on('click', function(){
     var c_json = getCRUDData()
     var deleteAPI = resort_name + c_json.resort.name
     deleteResortAjax(deleteAPI);
-    loadResortsAjax();
   });
 
   $('#User_destroy_crud_id').on('click', function(){
@@ -108,22 +152,58 @@ function getCRUDData(){
 //render response for normal user
 function renderShowResort(data,weather){
   var date = new Date();
-  $('#resort_info').html("<h2 id=" + "favorite" +data.id + ">" + data.name + "</h2>" + "<h4 id='vertical'>Vertical Feet: " + data.vertical + "</h4>" +   "<h4 id='acres'>Skiable Acres: " + data.acres + "</h4>" + "<h4 id='current_temp_f'>Temp: " + weather.current_observation.temp_f + " ℉ </h4>");
-  //$('#favorite_button').show();
+  $('#resort_info').html("<h2 id=" + "favorite" +data.id + ">" + data.name + "</h2>" + "<h4 id='vertical'>Vertical Feet: " + data.vertical + "</h4>" +   "<h4 id='acres'>Skiable Acres: " + data.acres + "</h4>");
+  lat2 = data.latitude
+  lon2 = data.longitude
+  showDistance()
+  if (weather.response.error){
+  }
+  else{
+    $('#resort_info').append("<h4 id='current_temp_f'>Temp: " + weather.current_observation.temp_f + " ℉ </h4>")
+
+  }
   $('#wunderground').show();
   $('#rating').html("Powder Index: " + (rating(data.vertical,data.acres,0)));
   $('#quote').html(quote(rating(data.vertical,data.acres),parseInt(date.getMonth()),0));
 }
 
 //render response on superuser page
-function renderShowResortAdmin(data,weather){
+function renderShowResortAdmin(data){
   $('#resorts_info_admin').html("<h3>"+ "ID: " +data.id+ " name: "+ data.name + " vertical: " + data.vertical +" acres: "+ data.acres + " location: " + data.location + "</h3>");
 }
 
 //render response to resort list
+
 function appendResortList(resort){
   var name = resort.name.replace(/ /g,"%20");
+  var idname = ("closest" + name);
   $('#full_list').append("<h3 class='resort' id=" + "resort" + name + ">" + resort.name + "</h3>");
+  lat2 = resort.latitude
+  lon2 = resort.longitude
+  var dist = calcDistance()
+  sortlist.push({id:idname, distance:dist,name: resort.name});
+}
+
+function appendClosestList(resort){
+  if (!resort.distance){
+   $('#closest_list').append("<h3 class='resort' id=" + resort.id + ">" + resort.name + "</h3>");
+  }else{
+      $('#closest_list').append("<h3 class='resort' id=" + resort.id + ">" + resort.name +  " " + resort.distance + "</h3>");
+  }
+}
+
+function numSorter(sortlist){
+  sortlist.sort(function (a, b) {
+    if (a.distance > b.distance) {
+      return 1;
+    }
+    if (a.distance < b.distance) {
+      return -1;
+    }
+    // a must be equal to b
+    return 0;
+  });
+  return sortlist;
 }
 
 //new user sign up
@@ -189,18 +269,21 @@ function isUser(data){
 function createFavorite(resortID,userUID){
   var data = {"favorite":{"user":userUID,"resort":resortID}}
   createFavoriteAjax(data);
+  $('#favorite_list').html("")
+  showFavoriteOfUser(userUID)
 }
 
 function destroyFavorite(resortID,userUID){
   var path = favorite_show + userUID + "/"+ resortID
   destroyFavoriteAjax(path);
-  showFavoriteOfUser(userUID);
+  $('#favorite_list').html("")
+  showFavoriteOfUser(userUID)
 }
 
 function showFavoriteOfUser(userID){
   var path = (favorite_show + userID)
-  showFavoriteOfUserAjax(path)
   $('#favorite_list').html("");
+  showFavoriteOfUserAjax(path)
 }
 
 function callFavorite(data){
@@ -261,6 +344,19 @@ $(document).ready(function() {
     $('#un_favorite_button').show()
   });
 
+  $('#closest_list').on('click', '.resort', function(event){
+    var path = (resort_name + event.target.id.substring(7));
+    $('#about_page').hide()
+    $('#super_div').hide()
+    $('#un_favorite_button').hide()
+    showResortAjax(path,"none")
+    $('#resort_column').show()
+    $('#pow_factor').show()
+    $('#pow_factor_info').show()
+    $('#favorite_button').show()
+
+  });
+
   //search bar on search_utton click
   $('#search_button').on('click', function(){
     var path = (resort_name + $('#search_box').val())
@@ -303,6 +399,7 @@ $(document).ready(function() {
     resortID = resortID.substring(8)
     var userID = userUID;
     createFavorite(resortID,userID)
+    $('#favorite_list').html("")
     showFavoriteOfUser(userUID);
   })
   //UNFAVORITE RESORT BUTTON
@@ -318,15 +415,26 @@ $(document).ready(function() {
   //favorite header button to display list
   $('#favorite_list_button').on('click',function(){
     $('#full_list').hide()
+    $('#closest_list').hide()
     $('#favorite_list').show()
+    $('#favorite_list').html("")
     showFavoriteOfUser(userUID);
   });
 
   //resort header to display list
   $('#resort_list_button').on('click',function(){
     $('#favorite_list').hide()
+    $('#closest_list').hide()
     $('#full_list').show()
-  });;
+    loadResortsAjax();
+  });
+
+  $('#closest_list_button').on('click',function(){
+    $('#favorite_list').hide()
+    $('#full_list').hide()
+    $('#closest_list').show()
+    loadResortsAjax()
+  });
 
   //login button on click with hard coded admin used info to CRUD
   $('#login_button').on('click', function(){
@@ -364,6 +472,11 @@ $(document).ready(function() {
 
   $('#header').on('click',function(){
     location.reload();
+  });
+
+  $('#login_page').on('click', function(){
+    $('#signUp').hide();
+    $('#loggin').show();
   });
 });
 

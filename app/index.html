@@ -59,6 +59,7 @@
           <input type="text" name="username" placeholder=" username" id="new_username">
           <input type="password" name="password" placeholder=" password" id="new_password">
           <input type="submit" value="Sign up" id="new_signup">
+          <input type="submit" value="Sign in" id="login_page">
         </div>
       </div>
 
@@ -107,6 +108,9 @@
         <div class="col-xs-5" id="resort_column" style= "display:none">
           <div id="resort_info">
           </div>
+          <div id="location_distance">
+            <div id="URdistance"></div>
+          </div>
           <div class="row" id="favorite_button_div" style= "display:none">
             <input class="favorite" type="submit" value="Favorite Resort" id="favorite_button"  style= "display:none">
             <input class="favorite" type="submit" value="Unfavorite Resort" id="un_favorite_button" style= "display:none">
@@ -124,13 +128,15 @@
           </div>
         </div>
         <div class="col-xs-3" id="resort_list">
-          <div class = "row">
-            <div class="col-xs-6" id="resort_list_button">Resorts</div>
-            <div class="col-xs-6" id="favorite_list_button" style= "display:none">Favorites</div>
+          <div class = "row" id="resort_header">
+            <div class="col-xs-4" id="resort_list_button">Resorts</div>
+            <div class="col-xs-4" id="closest_list_button">Closest</div>
+            <div class="col-xs-4" id="favorite_list_button" style= "display:none">Favorites</div>
           </div>
-          <div class = "row">
+          <div class = "row" id="resorts_show">
             <div class="col-xs-12" id="full_list"></div>
             <div class="col-xs-12" id="favorite_list" style= "display:none"></div>
+            <div class="col-xs-12" id="closest_list" style= "display:none"></div>
           </div>
         </div>
 

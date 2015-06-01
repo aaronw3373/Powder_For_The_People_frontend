@@ -2,6 +2,7 @@
 body{
   min-width: 800px;
   min-height:500px;
+  background-image: url("");
 }
 .container{
 margin:0;
@@ -39,8 +40,8 @@ padding: 0;
 #about_search_login{
   padding-top: 20px;
   padding-bottom: 20px;
-  border-top: 4px solid #336699;
-  border-bottom: 4px solid #336699;
+  /*border-top: 4px solid #336699;*/
+  /*border-bottom: 4px solid #336699;*/
 }
 input{
   height: 4vw;
@@ -64,11 +65,13 @@ input{
   margin-left:20%;
 }
 #logout_button, #toggle_privileges_button{
-  width: 20%;
+  width: 18%;
   max-height: 40px;
   min-height: 24px;
+  margin-left:10px;
   float:right;
 }
+
 
 #login_button, #signUp_button{
   width: 12%;
@@ -76,17 +79,17 @@ input{
   min-height: 24px;
 }
 #psw, #usn{
-  width: 32%;
+  width: 35%;
   max-height: 40px;
   min-height: 24px;
 }
 #new_fname, #new_username, #new_password{
-  width: 28%;
+  width: 24%;
   max-height: 40px;
   min-height: 24px;
 }
-#new_signup{
-  width: 11%;
+#new_signup,  #login_page{
+  width: 12%;
   max-height: 40px;
   min-height: 24px;
 }
@@ -102,6 +105,10 @@ input{
   width:18%;
   min-height: 24px;
 }
+
+#about_page{
+  padding: 50px;
+}
 /*left column resort info*/
 #resort_info{
   height: 250px;
@@ -114,11 +121,16 @@ input{
 #resort_info h2{
   font-size: 40px;
 }
+#URdistance{
+  font-size: 30px;
+  padding:20px;
+  padding-top: 0;
+}
 #wunderground{
-  margin-top: 300px;
+  margin-top: 250px;
   background: url(../images/wundergroundLogo_4c_horz.jpg) no-repeat;
   background-size: contain;
-  height:150px;
+  height:120px;
   width:250px;
 }
 #favorite_button #un_favorite_button{
@@ -126,7 +138,7 @@ input{
 }
 /*Middle column powfactor*/
 #pow_factor{
-  border-right: 4px solid #336699;
+  /*border-right: 4px solid #336699;*/
   height: calc(91vh - 9vw);
   margin: 0;
   padding:20px;
@@ -134,8 +146,21 @@ input{
 /*right column resort list*/
 #resort_list{
   margin: 0;
+  height: calc(91vh - 9vw);
+}
+#resort_header{
+  /*border-bottom: 4px solid #336699;*/
   padding: 20px;
 }
-#favorite_list_button, #resort_list_button{
-  font-size: 2vw;
+#resorts_show{
+  height:95%;
+  padding: 20px;
+  overflow: scroll;
 }
+#favorite_list_button, #resort_list_button, #closest_list_button{
+  font-size: 1.8vw;
+}
+#location_distance{
+  font-size:18px;
+}
+
