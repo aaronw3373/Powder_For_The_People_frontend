@@ -82,7 +82,7 @@ function calcDistance(){
 }
 
 function showDistance(){
-  delta.innerHTML = "Distance: " + calcDistance() + " miles"
+  delta.innerHTML = "Miles: " + calcDistance()
 }
 //Allow CRUD privileges when logged in as super user
 //gives user these commands as click handlers
@@ -188,7 +188,7 @@ function appendClosestList(resort){
   if (!resort.distance){
    $('#closest_list').append("<h3 class='resort' id=" + resort.id + ">" + resort.name + "</h3>");
   }else{
-      $('#closest_list').append("<h3 class='resort' id=" + resort.id + ">" + resort.name +  " " + resort.distance + "</h3>");
+      $('#closest_list').append("<h3 class='resort' id=" + resort.id + ">" + resort.distance +  " " + resort.name + "</h3>");
   }
 }
 
@@ -369,7 +369,24 @@ $(document).ready(function() {
     $('#resort_column').show()
     $('#pow_factor').show()
     $('#pow_factor_info').show()
+    $('#search_box').val("")
     return false;
+  });
+  $(search_box).keyup(function(event) {
+    if (event.keyCode === 13){
+      var path = (resort_name + $('#search_box').val())
+      $('#about_page').hide()
+      $('#super_div').hide()
+      showResortAjax(path,"none");
+      if (userUID !== undefined){
+        $('#favorite_button').show()
+      }
+      $('#resort_column').show()
+      $('#pow_factor').show()
+      $('#pow_factor_info').show()
+      $('#search_box').val("")
+      return false;
+    }
   });
 
   //about_button on click

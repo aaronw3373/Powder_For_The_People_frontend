@@ -1,13 +1,16 @@
 /*Over all*/
 body{
-  min-width: 800px;
-  min-height:500px;
-  background-image: url("");
+  min-width: 1000px;
+  min-height:800px;
+  background-image: url("../images/craig_powder.jpg");
+  background-size: cover;
 }
 .container{
 margin:0;
 padding: 0;
 width: 100%;
+background-color: rgba(41, 82, 122, 0.4);
+height: 100vh;
 }
 .row{
 margin:0;
@@ -16,12 +19,11 @@ padding: 0;
 
 /*Header*/
 #header{
-  padding-bottom: 10px;
+  height: 100px;
 }
 #header h1{
-  font-size: 4vw;
+  font-size: 48pt;
   color: #29527A;
-  height: 5vw;
   font-weight: bold;
   font-family: 'Righteous', cursive;
  }
@@ -40,74 +42,184 @@ padding: 0;
 #about_search_login{
   padding-top: 20px;
   padding-bottom: 20px;
-  /*border-top: 4px solid #336699;*/
-  /*border-bottom: 4px solid #336699;*/
+  height: 90px;
 }
 input{
-  height: 4vw;
+  height: 5vw;
 }
 #about_button{
   padding-left: 50px;
-  font-size: 2vw;
+  font-size: 25pt;
+  font-family: 'Righteous', cursive;
+}
+
+/*Search style*/
+.container-1{
+  width: 90%;
+  vertical-align: middle;
+  white-space: nowrap;
+  position: relative;
+}
+.container-1 input#search_box::-webkit-input-placeholder {
+   color: #65737e;
+}
+
+.container-1 input#search_box:-moz-placeholder { /* Firefox 18- */
+   color: #65737e;
+}
+
+.container-1 input#search_box::-moz-placeholder {  /* Firefox 19+ */
+   color: #65737e;
+}
+
+.container-1 input#search_box:-ms-input-placeholder {
+   color: #65737e;
+}
+.container-1 .icon{
+  position: absolute;
+  top: 50%;
+  margin-left: 17px;
+  margin-top: 15px;
+  z-index: 1;
+  color: #4f5b66;
+}
+.container-1 input#search_box:hover, .container-1 input#search_box:focus, .container-1 input#search_box:active{
+    outline:none;
+    background: #ffffff;
 }
 #search_box{
-  width:80%;
-  max-height: 40px;
-  min-height: 24px;
+  width:100%;
+  height: 50px;
+  background: #2b303b;
+  border: none;
+  font-size: 14pt;
+  float: left;
+  color: #63717f;
+  padding-left: 45px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  -webkit-transition: background .55s ease;
+  -moz-transition: background .55s ease;
+  -ms-transition: background .55s ease;
+  -o-transition: background .55s ease;
+  transition: background .55s ease;
 }
 #search_button{
   width:15%;
   max-height: 40px;
   min-height: 24px;
 }
+
+/*end search start login*/
 #logged_in_name{
-  font-size: 2vw;
-  margin-left:20%;
+  font-size: 25pt;
+  margin-left:10%;
+  font-family: 'Righteous', cursive;
 }
 #logout_button, #toggle_privileges_button{
-  width: 18%;
-  max-height: 40px;
-  min-height: 24px;
-  margin-left:10px;
+  width: 20%;
+  height: 50px;
+  background: #2b303b;
+  border: none;
+  font-size: 12pt;
+  color: #63717f;
+  margin-right: 5px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
   float:right;
 }
 
 
 #login_button, #signUp_button{
-  width: 12%;
-  max-height: 40px;
-  min-height: 24px;
+  width: 17%;
+  height: 50px;
+  background: #2b303b;
+  border: none;
+  font-size: 14pt;
+  float: left;
+  color: #63717f;
+  margin-right: 5px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
 }
 #psw, #usn{
-  width: 35%;
-  max-height: 40px;
-  min-height: 24px;
+  width: 30%;
+  height: 50px;
+  background: #ffffff;
+  border: none;
+  font-size: 14pt;
+  float: left;
+  color: #63717f;
+  margin-right: 5px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
 }
 #new_fname, #new_username, #new_password{
-  width: 24%;
-  max-height: 40px;
-  min-height: 24px;
+  width: 23%;
+  height: 50px;
+  background: #ffffff;
+  border: none;
+  font-size: 14pt;
+  color: #63717f;
+  margin-right: 5px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
 }
 #new_signup,  #login_page{
-  width: 12%;
-  max-height: 40px;
-  min-height: 24px;
+  width: 11%;
+  height: 50px;
+  background: #2b303b;
+  border: none;
+  font-size: 12pt;
+  color: #63717f;
+  margin-right: 5px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
 }
 
 /*Main div where the content and fun stuff happens*/
 /*Super User div*/
+#main{
+
+}
 .crud{
   margin-top: 20px;
   width: 15%;
   min-height: 24px;
+  background: #2b303b;
+  border: none;
+  font-size: 12pt;
+  color: #63717f;
+  margin-right: 5px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
 }
 .crud_form{
   width:18%;
+  padding-left: 10px;
   min-height: 24px;
+  background: #ffffff;
+  border: none;
+  font-size: 12pt;
+  color: #63717f;
+  margin-right: 5px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
 }
 
 #about_page{
   padding: 50px;
+}
+#about_page h1{
+  font-family: 'Righteous', cursive;
 }
 /*left column resort info*/
 #resort_info{
@@ -117,48 +229,79 @@ input{
 }
 #resort_info h4{
   font-size: 30px;
+  font-family: 'Hammersmith One', sans-serif;
+  font-weight: bold;
 }
 #resort_info h2{
   font-size: 40px;
+  font-family: 'Hammersmith One', sans-serif;
+  font-weight: bold;
 }
 #URdistance{
-  font-size: 30px;
+  font-size: 40px;
+  font-family: 'Hammersmith One', sans-serif;
+  font-weight: bold;
   padding:20px;
   padding-top: 0;
 }
 #wunderground{
-  margin-top: 250px;
+  margin-top: 300px;
   background: url(../images/wundergroundLogo_4c_horz.jpg) no-repeat;
   background-size: contain;
   height:120px;
   width:250px;
 }
-#favorite_button #un_favorite_button{
-  height: 50px;
+#favorite_button, #un_favorite_button{
+  margin-left: 20px;
+  height: 70px;
+  background: #2b303b;
+  border: none;
+  font-size: 16pt;
+  color: #63717f;
+  margin-right: 5px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
 }
 /*Middle column powfactor*/
 #pow_factor{
   /*border-right: 4px solid #336699;*/
-  height: calc(91vh - 9vw);
+  height: calc(100vh - 190px);
   margin: 0;
   padding:20px;
+}
+#pow_factor_info h2{
+  font-family: 'Hammersmith One', sans-serif;
+  font-weight: bold;
 }
 /*right column resort list*/
 #resort_list{
   margin: 0;
-  height: calc(91vh - 9vw);
+  padding: 0;
+  height: calc(100vh - 220px);
+  overflow: hidden;
 }
 #resort_header{
-  /*border-bottom: 4px solid #336699;*/
-  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  height:80px;
+  font-family: 'Righteous', cursive;
+}
+.resort{
+  font-size: 24pt;
+  font-family: 'Hammersmith One', sans-serif;
+  font-weight: bold;
 }
 #resorts_show{
-  height:95%;
-  padding: 20px;
-  overflow: scroll;
+  height: calc(100% - 90px);
+  padding-right: 20px;
+  overflow: auto;
+}
+#resorts_show::-webkit-scrollbar {
+  display: none;
 }
 #favorite_list_button, #resort_list_button, #closest_list_button{
-  font-size: 1.8vw;
+  font-size: 20pt;
 }
 #location_distance{
   font-size:18px;
