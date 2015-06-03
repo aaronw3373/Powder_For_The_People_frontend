@@ -7,7 +7,7 @@ var resort_index = "http://localhost:5000/resorts"
 var resort_show = "http://localhost:5000/resorts/"
 var resort_name = "http://localhost:5000/resortsname?name="
 
-
+// headers: {Authorization: 'Token token=' + token}
 //AJAX FUNCTIONS for resorts
 
 //create resort ajax call
@@ -62,9 +62,7 @@ function deleteResortAjax(path){
 // get index of resort list and populate resort_list div
 function loadResortsAjax(){
   // $('#full_list').html('<h2> Resorts</h2>');
-  shortestDistance = 100000;
   sortlist = [];
-  $('#full_list').html("")
   $('#closest_list').html("")
   $.ajax({
     url: resort_index,
@@ -74,9 +72,10 @@ function loadResortsAjax(){
   .done(function(data) {
     //render data as HTML
     data.forEach(function(resort){
-      appendResortList(resort);
+      sortResortList(resort);
     });
-    numSorter(sortlist).forEach(function(resort){
+    var sort = numSorter(sortlist)
+    sort.forEach(function(resort){
       appendClosestList(resort)
     })
   })
@@ -94,7 +93,7 @@ function showResortAjax(path,user){
   })
   .done(function(data) {
     if (user === "none"){
-      renderShowResort(data.resort,data.weather);
+      renderShowResort(data.resort,data.powRating,data.temp);
     }else if (user==="admin"){
       renderShowResortAdmin(data.resort);
     }
@@ -115,7 +114,7 @@ function showResortAjax(path,user){
 //Variables for user calls
 var user_index = "http://localhost:5000/users"
 var user_show = "http://localhost:5000/users/"
-var user_name = "http://localhost:5000/usersname?username="
+var user_name = "http://localhost:5000/useremail?email="
 
 //createnew user
 function createUserAjax(info){
@@ -135,21 +134,31 @@ function createUserAjax(info){
 }
 
 //get user on login by username
-function showUserAjax(path){
+function loginUserAjax(path){
   $.ajax({
     url: path,
-    type: 'GET',
-    dataType: 'json'
+    contentType: 'application/json',
+    processData: false,
+    type: 'POST',
+    dataType: 'json',
+    data: JSON.stringify({
+        credentials: {
+          email: $('#usn').val(),
+          password: $('#psw').val()
+        }
+      })
   })
   .done(function(data) {
-    isUserGod(data);
-    isUserAdmin(data);
-    isUser(data);
+    token = data.token;
+    isUserGod(data.user);
+    isUserAdmin(data.user);
+    isUser(data.user);
   })
   .fail(function(data) {
     console.log(data);
   })
 }
+
 
 function updateUserAjax(path,c_json){
   $.ajax({
@@ -173,6 +182,20 @@ function destroyUserAjax(path){
   })
   .done(function() {
     console.log("successful delete user");
+  })
+  .fail(function() {
+    console.log("error");
+  })
+
+}
+
+function showUserAjax(path){
+  $.ajax({
+    url: path,
+    type: 'GET'
+  })
+  .done(function(data) {
+    renderShowUserAdmin(data)
   })
   .fail(function() {
     console.log("error");

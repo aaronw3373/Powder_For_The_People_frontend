@@ -53,7 +53,7 @@
         </div>
         <div class="col-xs-6" id="loggin">
           <form>
-            <input type="text" name="username" placeholder=" username" id="usn">
+            <input type="text" name="username" placeholder=" email" id="usn">
             <input type="password" name="password" placeholder=" password" id="psw">
             <input type="submit" value="Sign in" id="login_button">
             <input type="submit" value="Sign up" id="signUp_button">
@@ -66,7 +66,7 @@
         </div>
         <div class="col-xs-6" id="signUp" style= "display:none">
           <input type="text" name="name" placeholder=" first name" id="new_fname">
-          <input type="text" name="username" placeholder=" username" id="new_username">
+          <input type="text" name="username" placeholder=" email" id="new_username">
           <input type="password" name="password" placeholder=" password" id="new_password">
           <input type="submit" value="Sign up" id="new_signup">
           <input type="submit" value="Sign in" id="login_page">
@@ -76,8 +76,8 @@
       <div class="row" id="main">
 
         <div class="col-xs-8 col-lg-9" id="super_div" style= "display:none">
-          <div class="row">
-            <h1>CRUD Resorts</h1>
+          <div class="row" id="resort_crud">
+            <h1 class="crud_header">CRUD Resorts</h1>
             <input class="crud_form" type="integer" id="ID_crud" placeholder="ID (read & update only)">
             <input class="crud_form" type="text" id="name_crud" placeholder="name">
             <input class="crud_form" type="integer" id="vertical_crud" placeholder="vertical">
@@ -93,14 +93,18 @@
           </div>
           <div class="row" id="resorts_info_admin">
           </div>
-          <div class="row">
-            <h1>Destroy Users</h1>
+          <div class="row" id="user_crud">
+            <h1 class="crud_header">CRUD Users</h1>
             <input class="crud_form" type="integer" id="User_ID_crud" placeholder="ID">
+            <input class="crud_form" type="text" id="User_email_crud" placeholder="email">
             <input class="crud_form" type="text" id="User_priv_crud" placeholder="privileges">
             <br>
-            <input class="crud" type="submit" value="DESTROY by ID" id="User_destroy_crud_id">
-            <!-- <input class="crud" type="submit" value="READ by ID" id="User_read_crud_ID"> -->
+            <input class="crud" type="submit" value="READ by ID" id="User_read_id">
+            <input class="crud" type="submit" value="READ by email" id="User_read_name">
             <input class="crud" type="submit" value="UPDATE by ID" id="User_update_crud">
+            <input class="crud" type="submit" value="DESTROY by ID" id="User_destroy_crud_id">
+          </div>
+          <div class="row" id="users_info_admin">
           </div>
         </div>
 
@@ -139,14 +143,12 @@
         </div>
         <div class="col-xs-4 col-lg-3" id="resort_list">
           <div class = "row" id="resort_header">
-            <div class="col-xs-4" id="resort_list_button">Resorts</div>
-            <div class="col-xs-4" id="closest_list_button">Closest</div>
-            <div class="col-xs-4" id="favorite_list_button" style= "display:none">Favorites</div>
+            <div class="col-xs-6" id="closest_list_button">Closest</div>
+            <div class="col-xs-6" id="favorite_list_button" style= "display:none">Favorites</div>
           </div>
           <div class = "row" id="resorts_show">
-            <div class="col-xs-12" id="full_list"></div>
             <div class="col-xs-12" id="favorite_list" style= "display:none"></div>
-            <div class="col-xs-12" id="closest_list" style= "display:none"></div>
+            <div class="col-xs-12" id="closest_list"></div>
           </div>
         </div>
 

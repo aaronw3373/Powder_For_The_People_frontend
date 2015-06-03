@@ -1,7 +1,7 @@
 /*Over all*/
 body{
   min-width: 1000px;
-  min-height:800px;
+  min-height:600px;
   background-image: url("../images/craig_powder.jpg");
   background-size: cover;
 }
@@ -26,17 +26,10 @@ padding: 0;
   color: #29527A;
   font-weight: bold;
   font-family: 'Righteous', cursive;
- }
-#pp{
   float:left;
   text-align: left;
   padding-left: 30px;
-}
-#pm{
-  float:right;
-  text-align: right;
-  padding-right: 30px;
-}
+ }
 
 /*About Search Login bar*/
 #about_search_login{
@@ -122,7 +115,7 @@ input{
   height: 50px;
   background: #2b303b;
   border: none;
-  font-size: 12pt;
+  font-size: 14pt;
   color: #63717f;
   margin-right: 5px;
   -webkit-border-radius: 8px;
@@ -185,8 +178,9 @@ input{
 
 /*Main div where the content and fun stuff happens*/
 /*Super User div*/
-#main{
-
+#super_div{
+  background-color: rgba(41, 82, 122, 0.8);
+  height: calc(100vh - 190px);
 }
 .crud{
   margin-top: 20px;
@@ -214,6 +208,13 @@ input{
   -moz-border-radius: 8px;
   border-radius: 8px;
 }
+#admin_resort, #admin_user{
+  font-size: 30px;
+  font-family: 'Hammersmith One', sans-serif;
+}
+.crud_header{
+  font-family: 'Hammersmith One', sans-serif;
+}
 
 #about_page{
   padding: 50px;
@@ -222,6 +223,10 @@ input{
   font-family: 'Righteous', cursive;
 }
 /*left column resort info*/
+#resort_column{
+  height: calc(100vh - 190px);
+  position: relative;
+}
 #resort_info{
   height: 250px;
   margin: 0;
@@ -245,10 +250,12 @@ input{
   padding-top: 0;
 }
 #wunderground{
-  margin-top: 300px;
-  background: url(../images/wundergroundLogo_4c_horz.jpg) no-repeat;
+  margin: 10px;
+  position: absolute;
+  bottom: 0;
+  background: url(../images/wund.png) no-repeat;
   background-size: contain;
-  height:120px;
+  height:50px;
   width:250px;
 }
 #favorite_button, #un_favorite_button{
@@ -277,8 +284,8 @@ input{
 /*right column resort list*/
 #resort_list{
   margin: 0;
-  padding: 0;
-  height: calc(100vh - 220px);
+  padding-top: 20px;
+  height: calc(100vh - 190px);
   overflow: hidden;
 }
 #resort_header{
@@ -300,8 +307,8 @@ input{
 #resorts_show::-webkit-scrollbar {
   display: none;
 }
-#favorite_list_button, #resort_list_button, #closest_list_button{
-  font-size: 20pt;
+#favorite_list_button, #closest_list_button{
+  font-size: 24pt;
 }
 #location_distance{
   font-size:18px;
