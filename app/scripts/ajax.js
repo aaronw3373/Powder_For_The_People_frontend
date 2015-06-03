@@ -1,11 +1,20 @@
+var localAPI = "http://localhost:5000"
+var herokuAPI = "https://weinberg-powder.herokuapp.co"
+var currentAPI;
+if (true){
+  currentAPI = localAPI;
+}else{
+  currentAPI = herokuAPI;
+}
+
 //
 //START Resort section
 //
 
 //VARIABLES for resorts api calls
-var resort_index = "https://weinberg-powder.herokuapp.com/resorts"
-var resort_show = "https://weinberg-powder.herokuapp.com/resorts/"
-var resort_name = "https://weinberg-powder.herokuapp.com/resortsname?name="
+var resort_index = currentAPI + "/resorts"
+var resort_show = currentAPI + "/resorts/"
+var resort_name = currentAPI + "/resortsname?name="
 
 // headers: {Authorization: 'Token token=' + token}
 //AJAX FUNCTIONS for resorts
@@ -116,10 +125,10 @@ function showResortAjax(path,user){
 //
 
 //Variables for user calls
-var user_index = "https://weinberg-powder.herokuapp.com/users"
-var user_show = "https://weinberg-powder.herokuapp.com/users/"
-var user_name = "https://weinberg-powder.herokuapp.com/useremail?email="
-var user_register = "https://weinberg-powder.herokuapp.com/register"
+var user_index = currentAPI + "/users"
+var user_show = currentAPI + "/users/"
+var user_name = currentAPI + "/useremail?email="
+var user_register = currentAPI + "/register"
 
 //get user on login by username
 function loginUserAjax(path){
@@ -218,8 +227,8 @@ function showUserAjax(path){
 //START favorite section
 //
 
-var favorite_index = "https://weinberg-powder.herokuapp.com/favorites"
-var favorite_show = "https://weinberg-powder.herokuapp.com/favorites/"
+var favorite_index = currentAPI + "/favorites"
+var favorite_show = currentAPI + "/favorites/"
 
 function createFavoriteAjax(data){
   $.ajax({

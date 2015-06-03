@@ -484,9 +484,7 @@ $(document).ready(function() {
   $('#login_button').on('click', function(){
     var email = $('#usn').val()
     var password = $('#psw').val()
-    var path = ("https://weinberg-powder.herokuapp.com/login")
-    //var data = {"user":{"username":username,"password":password}}
-    //replace true in the if statement with the authenticator
+    var path = (currentAPI + "/login")
     if(true){
       loginUserAjax(path);
       console.log("logging in")
