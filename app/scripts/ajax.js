@@ -3,9 +3,9 @@
 //
 
 //VARIABLES for resorts api calls
-var resort_index = "http://localhost:5000/resorts"
-var resort_show = "http://localhost:5000/resorts/"
-var resort_name = "http://localhost:5000/resortsname?name="
+var resort_index = "https://weinberg-powder.herokuapp.com/resorts"
+var resort_show = "https://weinberg-powder.herokuapp.com/resorts/"
+var resort_name = "https://weinberg-powder.herokuapp.com/resortsname?name="
 
 // headers: {Authorization: 'Token token=' + token}
 //AJAX FUNCTIONS for resorts
