@@ -484,7 +484,7 @@ $(document).ready(function() {
   $('#login_button').on('click', function(){
     var email = $('#usn').val()
     var password = $('#psw').val()
-    var path = ("http://localhost:5000/login")
+    var path = ("https://weinberg-powder.herokuapp.com/login")
     //var data = {"user":{"username":username,"password":password}}
     //replace true in the if statement with the authenticator
     if(true){
