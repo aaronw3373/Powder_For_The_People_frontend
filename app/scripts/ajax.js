@@ -116,10 +116,10 @@ function showResortAjax(path,user){
 //
 
 //Variables for user calls
-var user_index = "http://localhost:5000/users"
-var user_show = "http://localhost:5000/users/"
-var user_name = "http://localhost:5000/useremail?email="
-var user_register = "http://localhost:5000/register"
+var user_index = "https://weinberg-powder.herokuapp.com/users"
+var user_show = "https://weinberg-powder.herokuapp.com/users/"
+var user_name = "https://weinberg-powder.herokuapp.com/useremail?email="
+var user_register = "https://weinberg-powder.herokuapp.com/register"
 
 //get user on login by username
 function loginUserAjax(path){
@@ -218,8 +218,8 @@ function showUserAjax(path){
 //START favorite section
 //
 
-var favorite_index = "http://localhost:5000/favorites"
-var favorite_show = "http://localhost:5000/favorites/"
+var favorite_index = "https://weinberg-powder.herokuapp.com/favorites"
+var favorite_show = "https://weinberg-powder.herokuapp.com/favorites/"
 
 function createFavoriteAjax(data){
   $.ajax({
