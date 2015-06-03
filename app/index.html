@@ -10,6 +10,8 @@
     <link href='http://fonts.googleapis.com/css?family=Hammersmith+One' rel='stylesheet' type='text/css'>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -31,46 +33,43 @@
       <div class="row" id="header">
         <div class="col-xs-12">
           <h1 id="pp">Powder For The People</h1>
-          <!-- <h1 id="pm">Powder For Me</h1> -->
         </div>
       </div>
 
       <div class="row" id="about_search_login">
-        <div class="col-xs-2" id="about_button">About</div>
-        <div class="col-xs-4" id="search">
-          <!-- <form>
-            <input type="text" name="search" placeholder=" Search Resorts" id="search_box">
-            <input type="submit" value="Search" id="search_button">
-          </form> -->
 
-          <div class="box">
-            <div class="container-1">
-                <span class="icon" id="search_button"><i class="fa fa-search"></i></span>
-                <input type="search" id="search_box" placeholder="Search..." />
-            </div>
+        <div id="search_container" class="col-xs-3 col-xs-offset-1" >
+            <span class="icon" id="search_button"><i class="fa fa-search"></i></span>
+            <input type="search" id="search_box" placeholder="Search..." />
+        </div>
+
+        <div id="login_container" class="col-xs-8">
+          <input class="logs_pages" type="submit" value="Sign up" id="signUp_page">
+          <input class="logs_pages" type="submit" value="Sign in" id="login_page">
+
+          <div id="loggin" style="display:none">
+            <form>
+              <input type="password" name="password" placeholder=" password" id="psw">
+              <input type="text" name="username" placeholder=" email" id="usn">
+              <input type="submit" value="Sign in" id="login_button">
+            </form>
           </div>
 
+          <div id="logged_in" style="display:none">
+            <name id="logged_in_name"></name>
+            <input type="submit" value="Sign out" id="logout_button">
+            <input type="submit" value="Toggle" id="toggle_privileges_button" style="display:none">
+          </div>
+
+          <div id="signUp" style= "display:none">
+            <input type="submit" value="Sign up" id="signup_button">
+            <input type="password" name="password" placeholder=" password" id="new_password">
+            <input type="text" name="username" placeholder=" email" id="new_username">
+            <input type="text" name="name" placeholder=" first name" id="new_fname">
+
+          </div>
         </div>
-        <div class="col-xs-6" id="loggin">
-          <form>
-            <input type="text" name="username" placeholder=" email" id="usn">
-            <input type="password" name="password" placeholder=" password" id="psw">
-            <input type="submit" value="Sign in" id="login_button">
-            <input type="submit" value="Sign up" id="signUp_button">
-          </form>
-        </div>
-        <div class="col-xs-6" id="logged_in" style="display:none">
-          <name id="logged_in_name"></name>
-          <input type="submit" value="Sign out" id="logout_button">
-          <input type="submit" value="Toggle" id="toggle_privileges_button" style="display:none">
-        </div>
-        <div class="col-xs-6" id="signUp" style= "display:none">
-          <input type="text" name="name" placeholder=" first name" id="new_fname">
-          <input type="text" name="username" placeholder=" email" id="new_username">
-          <input type="password" name="password" placeholder=" password" id="new_password">
-          <input type="submit" value="Sign up" id="new_signup">
-          <input type="submit" value="Sign in" id="login_page">
-        </div>
+
       </div>
 
       <div class="row" id="main">

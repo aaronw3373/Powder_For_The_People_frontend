@@ -16,7 +16,8 @@ function createResortAjax(c_json){
     url: resort_index,
     type: 'POST',
     dataType: 'json',
-    data: c_json
+    data: c_json,
+    headers: { Authorization: 'Token token=' + token}
   })
   .done(function() {
     console.log("Created");
@@ -32,7 +33,8 @@ function updateResortAjax(path,c_json){
     url: path,
     type: 'PATCH',
     dataType: 'json',
-    data: c_json
+    data: c_json,
+    headers: { Authorization: 'Token token=' + token}
   })
   .done(function() {
     console.log("Updated");
@@ -47,6 +49,7 @@ function deleteResortAjax(path){
   $.ajax({
     url: path,
     type: 'DELETE',
+    headers: { Authorization: 'Token token=' + token}
   })
   .done(function() {
     console.log("Deleted");
@@ -89,13 +92,14 @@ function showResortAjax(path,user){
   $.ajax({
     url: path,
     type: 'GET',
-    dataType: 'json'
+    dataType: 'json',
+    headers: { Authorization: 'Token token=' + token}
   })
   .done(function(data) {
     if (user === "none"){
       renderShowResort(data.resort,data.powRating,data.temp);
     }else if (user==="admin"){
-      renderShowResortAdmin(data.resort);
+      renderShowResortAdmin(data.resort,data.stats);
     }
     else if (user==="favorite"){
       renderFavorite(data.resort)
@@ -115,23 +119,7 @@ function showResortAjax(path,user){
 var user_index = "http://localhost:5000/users"
 var user_show = "http://localhost:5000/users/"
 var user_name = "http://localhost:5000/useremail?email="
-
-//createnew user
-function createUserAjax(info){
-  $.ajax({
-      url: user_index,
-      type: 'POST',
-      dataType: 'json',
-      data: info
-    })
-    .done(function() {
-      $('#signUp').hide();
-      $('#loggin').show();
-    })
-    .fail(function() {
-      console.log("error");
-    })
-}
+var user_register = "http://localhost:5000/register"
 
 //get user on login by username
 function loginUserAjax(path){
@@ -150,22 +138,39 @@ function loginUserAjax(path){
   })
   .done(function(data) {
     token = data.token;
-    isUserGod(data.user);
-    isUserAdmin(data.user);
-    isUser(data.user);
+    isUserGod(data);
+    isUserAdmin(data);
+    isUser(data);
   })
   .fail(function(data) {
     console.log(data);
   })
 }
 
+//createnew user
+function createUserAjax(info){
+  $.ajax({
+      url: user_register,
+      type: 'POST',
+      dataType: 'json',
+      data: info
+    })
+    .done(function() {
+      $('#signUp').hide();
+      $('#loggin').show();
+    })
+    .fail(function() {
+      console.log("error");
+    })
+}
 
 function updateUserAjax(path,c_json){
   $.ajax({
     url: path,
     type: 'PATCH',
     dataType: 'json',
-    data: c_json
+    data: c_json,
+    headers: { Authorization: 'Token token=' + token}
   })
   .done(function() {
     console.log("Updated");
@@ -178,7 +183,8 @@ function updateUserAjax(path,c_json){
 function destroyUserAjax(path){
   $.ajax({
     url: path,
-    type: 'DELETE'
+    type: 'DELETE',
+    headers: { Authorization: 'Token token=' + token}
   })
   .done(function() {
     console.log("successful delete user");
@@ -192,7 +198,8 @@ function destroyUserAjax(path){
 function showUserAjax(path){
   $.ajax({
     url: path,
-    type: 'GET'
+    type: 'GET',
+    headers: { Authorization: 'Token token=' + token}
   })
   .done(function(data) {
     renderShowUserAdmin(data)
@@ -220,6 +227,7 @@ function createFavoriteAjax(data){
     type: 'POST',
     dataType: 'json',
     data: data,
+    headers: { Authorization: 'Token token=' + token}
   })
   .done(function() {
     console.log("Created Favorite");
@@ -233,7 +241,8 @@ function showFavoriteOfUserAjax(path){
   $.ajax({
     url: path,
     type: 'GET',
-    dataType: 'json'
+    dataType: 'json',
+    headers: { Authorization: 'Token token=' + token}
   })
   .done(function(data) {
     data.forEach(function(resort){
@@ -248,7 +257,8 @@ function showFavoriteOfUserAjax(path){
 function destroyFavoriteAjax(path){
   $.ajax({
     url: path,
-    type: 'DELETE'
+    type: 'DELETE',
+    headers: { Authorization: 'Token token=' + token}
   })
   .done(function() {
     console.log("successful delete");

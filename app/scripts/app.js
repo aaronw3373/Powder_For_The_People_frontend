@@ -61,6 +61,7 @@ function showPosition(position) {
 getLocation();
 
 
+
 function calcDistance(){
   function toRad(num){
     return num * (Math.PI / 180);
@@ -102,7 +103,7 @@ function ADMINPRIV(){
   $('#read_crud_name').on('click', function(){
     var c_json = getCRUDData()
     var path = resort_name + c_json.resort.name
-    showResortAjax(path,"admin")
+    (path,"admin")
   });
   $('#update_crud').on('click', function(){
     var id = $('#ID_crud').val()
@@ -209,8 +210,8 @@ function renderShowResort(data,rating,temp){
 }
 
 //render response on superuser resort request
-function renderShowResortAdmin(data){
-  $('#resorts_info_admin').html("<h3 id=admin_resort>"+ "ID: " +data.id+ " Name: "+ data.name + " Vertical: " + data.vertical +" Acres: "+ data.acres + " Station: " + data.location + "</h3>");
+function renderShowResortAdmin(data,stats){
+  $('#resorts_info_admin').html("<h3 id=admin_resort>"+ "ID: " +data.id+ " Name: "+ data.name + " Vertical: " + data.vertical +" Acres: "+ data.acres + " Station: " + data.location + " Users: "+ stats +"</h3>");
 }
 //redner respose to superuser user requert
 function renderShowUserAdmin(data){
@@ -229,7 +230,6 @@ function sortResortList(resort){
 }
 
 function appendClosestList(resort){
-  console.log(resort.distance)
   if (resort.distance === 5265 || !resort.distance){
    $('#closest_list').append("<h3 class='resort' id=" + resort.id + ">" + resort.name + "</h3>");
   }else{
@@ -362,6 +362,7 @@ function renderFavorite(data){
 
 
 $(document).ready(function() {
+  setTimeout(function(){getLocation()}, 100);
   //poulate full_list div
 
   //resort list click to show resort
@@ -422,25 +423,14 @@ $(document).ready(function() {
     }
   });
 
-  //about_button on click
-  $('#about_button').on('click', function(){
-    $('#resort_column').hide()
-    $('#pow_factor').hide()
-    $('#super_div').hide()
-    $('#about_page').show()
-    //slide onto div row main a short about_page for the app and how/why
-    //make so clicking anything else hides the about_page
-  });
-
-  $('#toggle_privileges_button').on('click',function(){
-    $('#super_div').toggle()
-    $('#resort_column').toggle()
-    $('#pow_factor').toggle()
-  })
-
   //Click wunderground logo takes you to wunderground site
   $('#wunderground').on('click',function(){
     window.open("http://www.wunderground.com/?apiref=390cac5ce90ab221");
+  });
+
+  //restart page on headaer click
+  $('#header').on('click',function(){
+    location.reload();
   });
 
   //favorite resort button
@@ -458,6 +448,13 @@ $(document).ready(function() {
     destroyFavorite(resortID,userID)
   })
 
+  //closest header button display list
+  $('#closest_list_button').on('click',function(){
+    $('#favorite_list').hide()
+    $('#closest_list').show()
+    loadResortsAjax()
+  });
+
   //favorite header button to display list
   $('#favorite_list_button').on('click',function(){
     $('#closest_list').hide()
@@ -467,18 +464,27 @@ $(document).ready(function() {
   });
 
 
+  //sign to show sign up page
+  $('#signUp_page').on('click',function(){
+    $('#loggin').hide();
+    $('#login_page').hide();
+    $('#signUp_page').hide();
+    $('#signUp').show();
+  });
 
-  $('#closest_list_button').on('click',function(){
-    $('#favorite_list').hide()
-    $('#closest_list').show()
-    loadResortsAjax()
+  //login to show login page
+  $('#login_page').on('click', function(){
+    $('#signUp').hide();
+    $('#login_page').hide();
+    $('#signUp_page').hide();
+    $('#loggin').show();
   });
 
   //login button on click with hard coded admin used info to CRUD
   $('#login_button').on('click', function(){
     var email = $('#usn').val()
     var password = $('#psw').val()
-    var path = (user_index + "login")
+    var path = ("http://localhost:5000/login")
     //var data = {"user":{"username":username,"password":password}}
     //replace true in the if statement with the authenticator
     if(true){
@@ -490,17 +496,17 @@ $(document).ready(function() {
     return false;
   });
 
-  //sign up click to sign up
-  $('#signUp_button').on('click',function(){
-    $('#loggin').hide();
-    $('#signUp').show();
-    return false;
-  });
-
   //sign up submit
-  $('#new_signup').on('click', function(){
+  $('#signup_button').on('click', function(){
     createUser();
   });
+
+  //toggle privileges
+  $('#toggle_privileges_button').on('click',function(){
+    $('#super_div').toggle()
+    $('#resort_column').toggle()
+    $('#pow_factor').toggle()
+  })
 
   //logout button
   $('#logout_button').on('click',function(){
@@ -508,16 +514,11 @@ $(document).ready(function() {
     location.reload();
   });
 
-  $('#header').on('click',function(){
-    location.reload();
-  });
 
-  $('#login_page').on('click', function(){
-    $('#signUp').hide();
-    $('#loggin').show();
-  });
 
-  setTimeout(function(){loadResortsAjax()}, 100);
+
+
+  setTimeout(function(){loadResortsAjax()}, 200);
 });
 
 
