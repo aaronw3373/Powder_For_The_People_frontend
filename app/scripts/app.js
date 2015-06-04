@@ -233,7 +233,7 @@ function appendClosestList(resort){
   if (resort.distance === 5265 || !resort.distance){
    $('#closest_list').append("<h3 class='resort' id=" + resort.id + ">" + resort.name + "</h3>");
   }else{
-      $('#closest_list').append("<h3 class='resort' id=" + resort.id + ">" + resort.distance +  " " + resort.name + "</h3>");
+      $('#closest_list').append("<li class='resort' id=" + resort.id + ">" + resort.name +  " " + resort.distance + " mi.</li>");
   }
 }
 
@@ -534,10 +534,12 @@ $(document).ready(function() {
   });
 
 
+  setTimeout(function(){
+    $('#main_content').show(1000);
+  },1000);
 
 
-
-  setTimeout(function(){loadResortsAjax()}, 300);
+  setTimeout(function(){loadResortsAjax()}, 500);
 });
 
 

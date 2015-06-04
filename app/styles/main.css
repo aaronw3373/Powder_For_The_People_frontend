@@ -9,7 +9,7 @@ body{
 margin:0;
 padding: 0;
 width: 100%;
-background-color: rgba(41, 82, 122, 0.6);
+/*background-color: rgba(41, 82, 122, 0.6);*/
 height: 100vh;
 }
 .row{
@@ -19,10 +19,10 @@ padding: 0;
 
 /*Header*/
 #header{
-  height: 100px;
+  height: 150px;
 }
 #header h1{
-  font-size: 48pt;
+  font-size: 72pt;
   color: #29527A;
   font-weight: bold;
   font-family: 'Righteous', cursive;
@@ -76,7 +76,7 @@ input{
 #search_box{
   width:100%;
   height: 50px;
-  background: #2b303b;
+  background-color: rgba(204,204,204, 0.5);
   border: none;
   font-size: 14pt;
   float: left;
@@ -106,7 +106,7 @@ input{
 .logs_pages{
   width: 12%;
   height: 50px;
-  background: #2b303b;
+  background-color: rgba(204,204,204, 0.8);
   border: none;
   font-size: 14pt;
   float: left;
@@ -119,7 +119,7 @@ input{
 #psw, #usn{
   width: 25%;
   height: 50px;
-  background: #ffffff;
+  background-color: rgba(204,204,204, 0.8);
   border: none;
   font-size: 14pt;
   float: left;
@@ -132,7 +132,7 @@ input{
 #login_button, #signup_button{
   width: 12%;
   height: 50px;
-  background: #2b303b;
+  background-color: rgba(204,204,204, 0.8);
   border: none;
   font-size: 14pt;
   float: left;
@@ -146,7 +146,7 @@ input{
 #logout_button, #toggle_privileges_button{
   width: 12%;
   height: 50px;
-  background: #2b303b;
+  background-color: rgba(204,204,204, 0.5);
   border: none;
   font-size: 14pt;
   color: #63717f;
@@ -163,7 +163,7 @@ input{
 #new_fname, #new_username, #new_password{
   width: 18%;
   height: 50px;
-  background: #ffffff;
+  background-color: rgba(204,204,204, 0.5);
   border: none;
   float:left;
   font-size: 14pt;
@@ -177,14 +177,13 @@ input{
 /*Main div where the content and fun stuff happens*/
 /*Super User div*/
 #super_div{
-  background-color: rgba(41, 82, 122, 0);
-  height: calc(100vh - 190px);
+  height: calc(100vh - 240px);
 }
 .crud{
   margin-top: 20px;
   width: 15%;
   min-height: 40px;
-  background: #2b303b;
+  background-color: rgba(204,204,204, 0.8);
   border: none;
   font-size: 12pt;
   color: #63717f;
@@ -197,7 +196,7 @@ input{
   width:18%;
   padding-left: 10px;
   min-height: 40px;
-  background: #ffffff;
+  background-color: rgba(204,204,204, 0.8);
   border: none;
   font-size: 12pt;
   color: #63717f;
@@ -216,12 +215,16 @@ input{
 
 #about_page{
   padding: 0px;
-  height: calc(100vh - 190px);
+  height: calc(100vh - 240px);
 }
 /*left column resort info*/
 #resort_column{
-  height: calc(100vh - 190px);
+  height: calc(100vh - 240px);
   position: relative;
+  background-color: rgba(204,204,204, 0.6);
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
 }
 #resort_info{
   height: 250px;
@@ -257,7 +260,7 @@ input{
 #favorite_button, #un_favorite_button{
   margin-left: 20px;
   height: 70px;
-  background: #2b303b;
+  background-color: rgba(204,204,204, 0.8);
   border: none;
   font-size: 16pt;
   color: #63717f;
@@ -269,7 +272,11 @@ input{
 /*Middle column powfactor*/
 #pow_factor{
   /*border-right: 4px solid #336699;*/
-  height: calc(100vh - 190px);
+  height: calc(100vh - 240px);
+  background-color: rgba(204,204,204, 0.6);
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
   margin: 0;
   padding:20px;
 }
@@ -279,13 +286,19 @@ input{
 }
 /*right column resort list*/
 #resort_list{
-  margin: 0;
-  padding-top: 20px;
-  height: calc(100vh - 190px);
+  height: calc(100vh - 240px);
+  background-color: rgba(204,204,204, 0.6);
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
   overflow: hidden;
 }
+/*#resort_list_inner{
+  padding: 20px;
+
+}*/
 #resort_header{
-  padding-top: 20px;
+  padding-top: 0px;
   padding-bottom: 10px;
   height:80px;
   font-family: 'Righteous', cursive;
@@ -300,11 +313,11 @@ input{
   padding-right: 20px;
   overflow: auto;
 }
-#resorts_show::-webkit-scrollbar {
+#resorts_list_inner::-webkit-scrollbar,#resorts_show::-webkit-scrollbar{
   display: none;
 }
 #favorite_list_button, #closest_list_button{
-  font-size: 24pt;
+  font-size: 30pt;
 }
 #location_distance{
   font-size:18px;
@@ -314,9 +327,13 @@ input{
   text-align: center;
 }
 #video_1{
-  max-height: calc(100vh - 260px);
 }#video_1_container{
   width:100%;
   padding:0;
-  height: calc(100vh - 265px);
+  z-index: -100;
+  position: fixed;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
 }
