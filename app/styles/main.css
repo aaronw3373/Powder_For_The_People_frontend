@@ -9,7 +9,7 @@ body{
 margin:0;
 padding: 0;
 width: 100%;
-background-color: rgba(41, 82, 122, 0.4);
+background-color: rgba(41, 82, 122, 0.6);
 height: 100vh;
 }
 .row{
@@ -40,11 +40,6 @@ padding: 0;
 input{
   height: 5vw;
 }
-#about_button{
-  padding-left: 50px;
-  font-size: 25pt;
-  font-family: 'Righteous', cursive;
-}
 
 /*Search style*/
 #search_container{
@@ -56,11 +51,11 @@ input{
    color: #65737e;
 }
 
-#search_container input#search_box:-moz-placeholder { /* Firefox 18- */
+#search_container input#search_box:-moz-placeholder {
    color: #65737e;
 }
 
-#search_container input#search_box::-moz-placeholder {  /* Firefox 19+ */
+#search_container input#search_box::-moz-placeholder {
    color: #65737e;
 }
 
@@ -105,7 +100,7 @@ input{
 /*end search start login*/
 #logged_in_name{
   font-size: 25pt;
-  margin-left:10%;
+  margin-left:30%;
   font-family: 'Righteous', cursive;
 }
 .logs_pages{
@@ -114,7 +109,7 @@ input{
   background: #2b303b;
   border: none;
   font-size: 14pt;
-  float: right;
+  float: left;
   color: #63717f;
   margin-right: 5px;
   -webkit-border-radius: 8px;
@@ -127,7 +122,7 @@ input{
   background: #ffffff;
   border: none;
   font-size: 14pt;
-  float: right;
+  float: left;
   color: #63717f;
   margin-right: 5px;
   -webkit-border-radius: 8px;
@@ -140,7 +135,7 @@ input{
   background: #2b303b;
   border: none;
   font-size: 14pt;
-  float: right;
+  float: left;
   color: #63717f;
   margin-right: 5px;
   -webkit-border-radius: 8px;
@@ -159,7 +154,7 @@ input{
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
-  float:right;
+  float:left;
 }
 
 
@@ -170,7 +165,7 @@ input{
   height: 50px;
   background: #ffffff;
   border: none;
-  float:right;
+  float:left;
   font-size: 14pt;
   color: #63717f;
   margin-right: 5px;
@@ -182,13 +177,13 @@ input{
 /*Main div where the content and fun stuff happens*/
 /*Super User div*/
 #super_div{
-  background-color: rgba(41, 82, 122, 0.8);
+  background-color: rgba(41, 82, 122, 0);
   height: calc(100vh - 190px);
 }
 .crud{
   margin-top: 20px;
   width: 15%;
-  min-height: 24px;
+  min-height: 40px;
   background: #2b303b;
   border: none;
   font-size: 12pt;
@@ -201,7 +196,7 @@ input{
 .crud_form{
   width:18%;
   padding-left: 10px;
-  min-height: 24px;
+  min-height: 40px;
   background: #ffffff;
   border: none;
   font-size: 12pt;
@@ -220,10 +215,8 @@ input{
 }
 
 #about_page{
-  padding: 50px;
-}
-#about_page h1{
-  font-family: 'Righteous', cursive;
+  padding: 0px;
+  height: calc(100vh - 190px);
 }
 /*left column resort info*/
 #resort_column{
@@ -316,4 +309,14 @@ input{
 #location_distance{
   font-size:18px;
 }
-
+#video_head{
+  font-family: 'Righteous', cursive;
+  text-align: center;
+}
+#video_1{
+  max-height: calc(100vh - 260px);
+}#video_1_container{
+  width:100%;
+  padding:0;
+  height: calc(100vh - 265px);
+}

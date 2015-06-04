@@ -280,6 +280,7 @@ function isUserGod(data){
     $('#resort_column').hide()
     $('#pow_factor').hide()
     $('#about_page').hide()
+    document.getElementById("video_1").pause();
     $('#super_div').show()
     $('#favorite_list_button').show()
     $('#favorite_button_div').show()
@@ -297,6 +298,7 @@ function isUserAdmin(data){
     $('#resort_column').hide()
     $('#pow_factor').hide()
     $('#about_page').hide()
+    document.getElementById("video_1").pause();
     $('#user_crud').hide()
     $('#super_div').show()
     $('#toggle_privileges_button').show()
@@ -362,13 +364,14 @@ function renderFavorite(data){
 
 
 $(document).ready(function() {
-  setTimeout(function(){getLocation()}, 100);
+  setTimeout(function(){getLocation()},250);
   //poulate full_list div
 
   //resort list click to show resort
     $('#favorite_list').on('click', '.resort', function(event){
     var path = (resort_name + event.target.id.substring(8));
     $('#about_page').hide()
+    document.getElementById("video_1").pause();
     $('#super_div').hide()
     $('#favorite_button').hide()
     showResortAjax(path,"none")
@@ -381,6 +384,7 @@ $(document).ready(function() {
   $('#closest_list').on('click', '.resort', function(event){
     var path = (resort_name + event.target.id.substring(7));
     $('#about_page').hide()
+    document.getElementById("video_1").pause();
     $('#super_div').hide()
     $('#un_favorite_button').hide()
     showResortAjax(path,"none")
@@ -395,6 +399,7 @@ $(document).ready(function() {
   $('#search_button').on('click', function(){
     var path = (resort_name + $('#search_box').val())
     $('#about_page').hide()
+    document.getElementById("video_1").pause();
     $('#super_div').hide()
     showResortAjax(path,"none");
     if (userUID !== undefined){
@@ -406,10 +411,11 @@ $(document).ready(function() {
     $('#search_box').val("")
     return false;
   });
-  $(search_box).keyup(function(event) {
+  $('#search_box').keyup(function(event) {
     if (event.keyCode === 13){
       var path = (resort_name + $('#search_box').val())
       $('#about_page').hide()
+      document.getElementById("video_1").pause();
       $('#super_div').hide()
       showResortAjax(path,"none");
       if (userUID !== undefined){
@@ -463,24 +469,39 @@ $(document).ready(function() {
     showFavoriteOfUser(userUID);
   });
 
-
   //sign to show sign up page
   $('#signUp_page').on('click',function(){
-    $('#loggin').hide();
-    $('#login_page').hide();
-    $('#signUp_page').hide();
-    $('#signUp').show();
+    $('#loggin').hide(300);
+    $('#login_page').hide(300);
+    $('#signUp_page').hide(300);
+    $('#signUp').show(300);
   });
 
   //login to show login page
   $('#login_page').on('click', function(){
-    $('#signUp').hide();
-    $('#login_page').hide();
-    $('#signUp_page').hide();
-    $('#loggin').show();
+    $('#signUp').hide(300);
+    $('#login_page').hide(300);
+    $('#signUp_page').hide(300);
+    $('#loggin').show(300);
   });
 
   //login button on click with hard coded admin used info to CRUD
+  $('#psw').keyup(function(event){
+    if (event.keyCode === 13){
+      var email = $('#usn').val()
+      var password = $('#psw').val()
+      var path = (currentAPI + "/login")
+      if(true){
+        loginUserAjax(path);
+        console.log("logging in")
+      }else{
+        alert("username or password incorrect");
+      }
+      return false;
+    }
+  });
+
+
   $('#login_button').on('click', function(){
     var email = $('#usn').val()
     var password = $('#psw').val()
@@ -516,7 +537,7 @@ $(document).ready(function() {
 
 
 
-  setTimeout(function(){loadResortsAjax()}, 200);
+  setTimeout(function(){loadResortsAjax()}, 300);
 });
 
 
