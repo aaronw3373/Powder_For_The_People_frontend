@@ -1,8 +1,8 @@
 /*Over all*/
 body{
-  min-width: 1000px;
+  min-width: 1100px;
   min-height:600px;
-  background-image: url("../images/craig_powder.jpg");
+  /*background-image: url("../images/craig_powder.jpg");*/
   background-size: cover;
 }
 .container{
@@ -23,7 +23,7 @@ padding: 0;
 }
 #header h1{
   font-size: 72pt;
-  color: #29527A;
+  color: #1975A3;
   font-weight: bold;
   font-family: 'Righteous', cursive;
   float:left;
@@ -110,7 +110,7 @@ input{
   border: none;
   font-size: 14pt;
   float: left;
-  color: #63717f;
+  color: #000000;
   margin-right: 5px;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
@@ -123,7 +123,7 @@ input{
   border: none;
   font-size: 14pt;
   float: left;
-  color: #63717f;
+  color: #000000;
   margin-right: 5px;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
@@ -136,7 +136,7 @@ input{
   border: none;
   font-size: 14pt;
   float: left;
-  color: #63717f;
+  color: #000000;
   margin-right: 5px;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
@@ -149,7 +149,7 @@ input{
   background-color: rgba(204,204,204, 0.5);
   border: none;
   font-size: 14pt;
-  color: #63717f;
+  color: #000000;
   margin-right: 5px;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
@@ -167,13 +167,26 @@ input{
   border: none;
   float:left;
   font-size: 14pt;
-  color: #63717f;
+  color: #000000;
   margin-right: 5px;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
 }
 
+.logs_return{
+  width: 10%;
+  height: 50px;
+  background-color: rgba(204,204,204, 0.5);
+  border: none;
+  float:left;
+  font-size: 14pt;
+  color: #000000;
+  margin-right: 5px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}
 /*Main div where the content and fun stuff happens*/
 /*Super User div*/
 #super_div{
@@ -183,10 +196,10 @@ input{
   margin-top: 20px;
   width: 15%;
   min-height: 40px;
-  background-color: rgba(204,204,204, 0.8);
+  background-color: rgba(230,230,230, 0.9);
   border: none;
   font-size: 12pt;
-  color: #63717f;
+  color: #000000;
   margin-right: 5px;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
@@ -196,10 +209,10 @@ input{
   width:18%;
   padding-left: 10px;
   min-height: 40px;
-  background-color: rgba(204,204,204, 0.8);
+  background-color: rgba(230,230, 230, 0.9);
   border: none;
-  font-size: 12pt;
-  color: #63717f;
+  font-size: 14pt;
+  color: #000000;
   margin-right: 5px;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
@@ -211,6 +224,11 @@ input{
 }
 .crud_header{
   font-family: 'Hammersmith One', sans-serif;
+  background-color: rgba(230,230, 230, 0.6);
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  padding-left: 50px;
 }
 
 #about_page{
@@ -262,8 +280,8 @@ input{
   height: 70px;
   background-color: rgba(204,204,204, 0.8);
   border: none;
-  font-size: 16pt;
-  color: #63717f;
+  font-size: 18pt;
+  color: #000000;
   margin-right: 5px;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
@@ -283,6 +301,7 @@ input{
 #pow_factor_info h2{
   font-family: 'Hammersmith One', sans-serif;
   font-weight: bold;
+  font-size: 28pt;
 }
 /*right column resort list*/
 #resort_list{

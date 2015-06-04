@@ -8,9 +8,9 @@ var lon2;
 
 
 //The magic algorithm woah...
-function rating(vertical,acres,snowfall){
-  return Math.round(((2000 + vertical + acres)/500)*(1+snowfall));
-};
+// function rating(vertical,acres,snowfall){
+//   return Math.round(((2000 + vertical + acres)/500)*(1+snowfall));
+// };
 
 //determine which quote to display
 function quote(rating,month){
@@ -233,7 +233,7 @@ function appendClosestList(resort){
   if (resort.distance === 5265 || !resort.distance){
    $('#closest_list').append("<h3 class='resort' id=" + resort.id + ">" + resort.name + "</h3>");
   }else{
-      $('#closest_list').append("<li class='resort' id=" + resort.id + ">" + resort.name +  " " + resort.distance + " mi.</li>");
+      $('#closest_list').append("<li class='resort' id=" + resort.id + ">" + resort.name +  " " + resort.distance + " mi. " + "</li>");
   }
 }
 
@@ -375,8 +375,8 @@ $(document).ready(function() {
     $('#super_div').hide()
     $('#favorite_button').hide()
     showResortAjax(path,"none")
-    $('#resort_column').show()
-    $('#pow_factor').show()
+    $('#resort_column').show(300)
+    $('#pow_factor').show(300)
     $('#pow_factor_info').show()
     $('#un_favorite_button').show()
   });
@@ -388,8 +388,8 @@ $(document).ready(function() {
     $('#super_div').hide()
     $('#un_favorite_button').hide()
     showResortAjax(path,"none")
-    $('#resort_column').show()
-    $('#pow_factor').show()
+    $('#resort_column').show(300)
+    $('#pow_factor').show(300)
     $('#pow_factor_info').show()
     $('#favorite_button').show()
 
@@ -405,8 +405,8 @@ $(document).ready(function() {
     if (userUID !== undefined){
       $('#favorite_button').show()
     }
-    $('#resort_column').show()
-    $('#pow_factor').show()
+    $('#resort_column').show(300)
+    $('#pow_factor').show(300)
     $('#pow_factor_info').show()
     $('#search_box').val("")
     return false;
@@ -421,8 +421,8 @@ $(document).ready(function() {
       if (userUID !== undefined){
         $('#favorite_button').show()
       }
-      $('#resort_column').show()
-      $('#pow_factor').show()
+      $('#resort_column').show(300)
+      $('#pow_factor').show(300)
       $('#pow_factor_info').show()
       $('#search_box').val("")
       return false;
@@ -484,6 +484,13 @@ $(document).ready(function() {
     $('#signUp_page').hide(300);
     $('#loggin').show(300);
   });
+
+  $('.logs_return').on('click', function(){
+    $('#signUp').hide(300);
+    $('#loggin').hide(300);
+    $('#signUp_page').show(300);
+    $('#login_page').show(300);
+  })
 
   //login button on click with hard coded admin used info to CRUD
   $('#psw').keyup(function(event){
