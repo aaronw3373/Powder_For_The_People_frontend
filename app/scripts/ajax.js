@@ -1,7 +1,7 @@
 var localAPI = "http://localhost:5000"
 var herokuAPI = "https://weinberg-powder.herokuapp.com"
 var currentAPI;
-if (true){
+if (false){
   currentAPI = localAPI;
 }else{
   currentAPI = herokuAPI;
