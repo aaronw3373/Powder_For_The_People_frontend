@@ -325,14 +325,14 @@ function createFavorite(resortID,userUID,name){
   var data = {"favorite":{"user":userUID,"resort":resortID,"name":name}}
   createFavoriteAjax(data);
   $('#favorite_list').html("")
-  setTimeout(function(){showFavoriteOfUser(userUID)}, 100);
+  setTimeout(function(){showFavoriteOfUser(userUID)}, 200);
 }
 
 function destroyFavorite(resortID,userUID){
   var path = favorite_show + userUID + "/"+ resortID
   destroyFavoriteAjax(path);
   $('#favorite_list').html("")
-  setTimeout(function(){showFavoriteOfUser(userUID)}, 100);
+  setTimeout(function(){showFavoriteOfUser(userUID)}, 200);
 }
 
 function showFavoriteOfUser(userID){
