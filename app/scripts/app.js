@@ -362,7 +362,7 @@ function renderFavorite(data){
 
 
 $(document).ready(function() {
-  setTimeout(function(){getLocation()},250);
+  setTimeout(function(){getLocation()},400);
   //poulate full_list div
 
   //resort list click to show resort
@@ -590,6 +590,9 @@ $(document).ready(function() {
   });
 
 
+
+  setTimeout(function(){loadResortsAjax()}, 500);
+
   setTimeout(function(){
     $('#main_content').show(1000);
   },500);
@@ -598,8 +601,6 @@ $(document).ready(function() {
   },1500);
 
 
-
-  setTimeout(function(){loadResortsAjax()}, 500);
 });
 
 
