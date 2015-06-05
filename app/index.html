@@ -41,7 +41,7 @@
 
     <div id="main_content" class="container" style="display:none">
 
-      <div class="row" id="header">
+      <div class="row" id="header" style="display:none">
         <div class="col-xs-12">
           <h1 id="pp">Powder For The People</h1>
         </div>
@@ -58,6 +58,7 @@
             <form>
               </form>
               <input class="logs_return" type="submit" value="Return">
+              <input type="submit" value="Sign in" id="signin_button">
               <input type="text" name="username" placeholder=" email" id="usn">
               <input type="password" name="password" placeholder=" password" id="psw">
           </div>
@@ -78,7 +79,9 @@
         </div>
 
         <div id="search_container" class="col-xs-4 col-xs-offset-1">
-            <span class="icon" id="search_button"><i class="fa fa-search"></i></span>
+            <span class="icon" id="search_button">
+              <i id="search_icon" class="fa fa-search"></i>
+            </span>
             <input type="search" id="search_box" placeholder="Resort . . . . ." />
         </div>
 

@@ -151,8 +151,8 @@ function loginUserAjax(path){
     isUserAdmin(data);
     isUser(data);
   })
-  .fail(function(data) {
-    console.log(data);
+  .fail(function() {
+    alert("username or password incorrect");
   })
 }
 

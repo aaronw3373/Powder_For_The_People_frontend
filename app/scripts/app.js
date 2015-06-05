@@ -273,17 +273,17 @@ function getUserInfo(){
 function isUserGod(data){
   if (data.privileges === "god"){
     $('#loggin').hide()
-    $('#logged_in').show()
     $('#logged_in_name').html("Welcome " + data.name)
+    $('#logged_in').show(300);
     console.log("logged in as God");
     $('#toggle_privileges_button').show()
     $('#resort_column').hide()
     $('#pow_factor').hide()
     $('#about_page').hide()
     document.getElementById("video_1").pause();
-    $('#super_div').show()
-    $('#favorite_list_button').show()
-    $('#favorite_button_div').show()
+    $('#super_div').show(300)
+    $('#favorite_list_button').show(300)
+    $('#favorite_button_div').show(300)
     userUID = data.id
     GODPRIV();
   }
@@ -292,29 +292,30 @@ function isUserGod(data){
 function isUserAdmin(data){
   if (data.privileges === "admin"){
     $('#loggin').hide()
-    $('#logged_in').show()
     $('#logged_in_name').html("Welcome " + data.name)
+    $('#logged_in').show(300);
     console.log("logged in as Admin")
     $('#resort_column').hide()
     $('#pow_factor').hide()
     $('#about_page').hide()
     document.getElementById("video_1").pause();
     $('#user_crud').hide()
-    $('#super_div').show()
-    $('#toggle_privileges_button').show()
-    $('#favorite_list_button').show()
-    $('#favorite_button_div').show()
+    $('#super_div').show(300)
+    $('#resort_crud').show(300)
+    $('#toggle_privileges_button').show(300)
+    $('#favorite_list_button').show(300)
+    $('#favorite_button_div').show(300)
     userUID = data.id
     ADMINPRIV()
   }
 }
 function isUser(data){
   if (data.privileges === "none"){
-    $('#loggin').hide()
-    $('#logged_in').show()
+    $('#loggin').hide();
     $('#logged_in_name').html("Welcome " + data.name)
-    $('#favorite_list_button').show()
-    $('#favorite_button_div').show()
+    $('#logged_in').show(300);
+    $('#favorite_list_button').show(300)
+    $('#favorite_button_div').show(300)
     userUID = data.id
   }
 }
@@ -331,7 +332,7 @@ function destroyFavorite(resortID,userUID){
   var path = favorite_show + userUID + "/"+ resortID
   destroyFavoriteAjax(path);
   $('#favorite_list').html("")
-  showFavoriteOfUser(userUID)
+
 }
 
 function showFavoriteOfUser(userID){
@@ -416,7 +417,7 @@ $(document).ready(function() {
       var path = (resort_name + $('#search_box').val())
       $('#about_page').hide()
       document.getElementById("video_1").pause();
-      $('#super_div').hide()
+      $('#super_div').hide(300)
       showResortAjax(path,"none");
       if (userUID !== undefined){
         $('#favorite_button').show()
@@ -452,19 +453,20 @@ $(document).ready(function() {
     resortID = resortID.substring(8)
     var userID = userUID;
     destroyFavorite(resortID,userID)
+    showFavoriteOfUser(userUID);
   })
 
   //closest header button display list
   $('#closest_list_button').on('click',function(){
-    $('#favorite_list').hide()
-    $('#closest_list').show()
+    $('#favorite_list').hide(300)
+    $('#closest_list').show(300)
     loadResortsAjax()
   });
 
   //favorite header button to display list
   $('#favorite_list_button').on('click',function(){
-    $('#closest_list').hide()
-    $('#favorite_list').show()
+    $('#closest_list').hide(300)
+    $('#favorite_list').show(300)
     $('#favorite_list').html("")
     showFavoriteOfUser(userUID);
   });
@@ -501,26 +503,20 @@ $(document).ready(function() {
       if(true){
         loginUserAjax(path);
         console.log("logging in")
-      }else{
-        alert("username or password incorrect");
       }
       return false;
     }
   });
-
-
-  $('#login_button').on('click', function(){
+  $('#signin_button').on('click',function(){
     var email = $('#usn').val()
     var password = $('#psw').val()
     var path = (currentAPI + "/login")
     if(true){
       loginUserAjax(path);
       console.log("logging in")
-    }else{
-      alert("username or password incorrect");
     }
-    return false;
-  });
+  })
+
 
   //sign up submit
   $('#signup_button').on('click', function(){
@@ -529,9 +525,9 @@ $(document).ready(function() {
 
   //toggle privileges
   $('#toggle_privileges_button').on('click',function(){
-    $('#super_div').toggle()
-    $('#resort_column').toggle()
-    $('#pow_factor').toggle()
+    $('#super_div').toggle(300)
+    $('#resort_column').toggle(300)
+    $('#pow_factor').toggle(300)
   })
 
   //logout button
@@ -543,7 +539,11 @@ $(document).ready(function() {
 
   setTimeout(function(){
     $('#main_content').show(1000);
-  },1000);
+  },500);
+  setTimeout(function(){
+    $('#header').show(1000);
+  },1500);
+
 
 
   setTimeout(function(){loadResortsAjax()}, 500);
