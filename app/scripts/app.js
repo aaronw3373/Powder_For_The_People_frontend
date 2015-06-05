@@ -424,6 +424,43 @@ $(document).ready(function() {
       return false;
     }
   });
+  //search bar on search_utton click
+  $('#search_button2').on('click', function(){
+    var path = (resort_name + $('#search_box2').val())
+    $('3search_container_2').hide(300)
+    $('#about_page').hide()
+    $('#super_div').hide()
+    showResortAjax(path,"none");
+    if (userUID !== undefined){
+      $('#un_favorite_button').hide()
+      $('#favorite_button').show()
+    }
+    $('#search_container').show(300)
+    $('#resort_column').show(300)
+    $('#pow_factor').show(300)
+    $('#pow_factor_info').show()
+    $('#search_box').val("")
+    return false;
+  });
+  $('#search_box2').keyup(function(event) {
+    if (event.keyCode === 13){
+      var path = (resort_name + $('#search_box2').val())
+      $('#search_container_2').hide(300)
+      $('#about_page').hide()
+      $('#super_div').hide(300)
+      showResortAjax(path,"none");
+      if (userUID !== undefined){
+        $('#un_favorite_button').hide()
+        $('#favorite_button').show()
+      }
+      $('#search_container').show(300)
+      $('#resort_column').show(300)
+      $('#pow_factor').show(300)
+      $('#pow_factor_info').show()
+      $('#search_box').val("")
+      return false;
+    }
+  });
 
   //Click wunderground logo takes you to wunderground site
   $('#wunderground').on('click',function(){
@@ -438,10 +475,10 @@ $(document).ready(function() {
     video = document.getElementById("video_1")
     if (video.paused == false) {
         video.pause();
-        $('#play_pause').html("Play")
+        $('#play_pause').val("Play")
     } else {
         video.play();
-        $('#play_pause').html("Pause")
+        $('#play_pause').val("Pause")
     }
   })
 
@@ -449,8 +486,10 @@ $(document).ready(function() {
     video = document.getElementById("video_1")
     if (video.muted){
       video.muted = false
+      $('#mute_button').val("Mute")
     }else{
       video.muted = true
+      $('#mute_button').val("Mute")
     }
   });
 

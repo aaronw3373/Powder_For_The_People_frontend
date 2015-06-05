@@ -35,7 +35,6 @@
       <div align="center" class="embed-responsive embed-responsive-16by9 col-xs-12">
           <video id="video_1" autoplay muted loop class="embed-responsive-item">
             <source src="../images/0001-0636.mp4" type=video/mp4>
-            <source src="../images/0001-0636.ogv" type=video/mp4>
           </video>
       </div>
     </div>
@@ -48,10 +47,10 @@
         </div>
         <div class="col-xs-3">
           <div class="col-xs-6">
-            <input id="mute_button" value="Mute"></input>
+            <input type="submit" id="mute_button" value="Mute"></input>
           </div>
           <div class="col-xs-6">
-            <input id="play_pause" value="Pause"></input>
+            <input type="submit" id="play_pause" value="Pause"></input>
           </div>
         </div>
       </div>
@@ -87,7 +86,7 @@
           </div>
         </div>
 
-        <div id="search_container" class="col-xs-4 col-xs-offset-1">
+        <div id="search_container" class="col-xs-4 col-xs-offset-1"  style= "display:none">
             <span class="icon" id="search_button">
               <i id="search_icon" class="fa fa-search"></i>
             </span>
@@ -134,8 +133,13 @@
         </div>
 
         <div class="col-xs-8" id="about_page">
-          <!-- <h1 id="video_head">Video of The Week</h1> -->
-
+          <h1 id="about_header">Search Your Favorite Resort</h1>
+          <div id="search_container_2" class="col-xs-12">
+            <span class="icon2" id="search_button2">
+              <i id="search_icon2" class="fa fa-search"></i>
+            </span>
+            <input type="search" id="search_box2" autofocus="autofocus" placeholder="Resort . . . . ." />
+          </div>
 
         </div>
         <div class="col-xs-4">
