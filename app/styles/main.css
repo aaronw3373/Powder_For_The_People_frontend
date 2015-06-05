@@ -33,6 +33,19 @@ padding: 0;
  #header h1:hover{
   color:#65737e;
  }
+ #play_pause, #mute_button{
+  font-size: 40pt;
+  margin-top: 40px;
+  font-weight: bold;
+  height:60px;
+  width: 150px;
+  background-color: rgba(204,204,204, 0);
+  border:none;
+  font-family: 'Hammersmith One', sans-serif;
+ }
+  #play_pause:hover, #mute_button:hover{
+    color:#1975A3;
+  }
 
 /*About Search Login bar*/
 #about_search_login{
@@ -112,6 +125,7 @@ input{
   color: #1975A3;
   font-family: 'Righteous', cursive;
 }
+
 #logged_in_name:hover{
   color:#65737e;
 }
@@ -339,7 +353,8 @@ input{
 
 }*/
 #resort_header{
-  padding-top: 0px;
+  padding-top: 10px;
+  padding-left: 10px;
   padding-bottom: 10px;
   height:80px;
   font-family: 'Righteous', cursive;
@@ -352,7 +367,11 @@ input{
 #resorts_show{
   height: calc(100% - 90px);
   padding-right: 20px;
+  padding-left: 20px;
   overflow: auto;
+}
+li.resort{
+    list-style-type: none;
 }
 #resorts_list_inner::-webkit-scrollbar,#resorts_show::-webkit-scrollbar{
   display: none;
@@ -361,10 +380,10 @@ input{
   font-size: 30pt;
 }
 #favorite_list_button:hover, #closest_list_button:hover{
-  color:#65737e;
+  color:#1975A3;
 }
 .resort:hover{
-  color: #65737e;
+  color: #1975A3;
 }
 
 #location_distance{

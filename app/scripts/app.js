@@ -231,7 +231,7 @@ function sortResortList(resort){
 
 function appendClosestList(resort){
   if (resort.distance === 5265 || !resort.distance){
-   $('#closest_list').append("<h3 class='resort' id=" + resort.id + ">" + resort.name + "</h3>");
+   $('#closest_list').append("<li class='resort' id=" + resort.id + ">" + resort.name + "</li>");
   }else{
       $('#closest_list').append("<li class='resort' id=" + resort.id + ">" + resort.name +  " " + resort.distance + " mi. " + "</li>");
   }
@@ -280,7 +280,7 @@ function isUserGod(data){
     $('#resort_column').hide()
     $('#pow_factor').hide()
     $('#about_page').hide()
-    document.getElementById("video_1").pause();
+    $('#un_favorite_button').hide()
     $('#super_div').show(300)
     $('#favorite_list_button').show(300)
     $('#favorite_button_div').show(300)
@@ -298,8 +298,8 @@ function isUserAdmin(data){
     $('#resort_column').hide()
     $('#pow_factor').hide()
     $('#about_page').hide()
-    document.getElementById("video_1").pause();
     $('#user_crud').hide()
+    $('#un_favorite_button').hide()
     $('#super_div').show(300)
     $('#resort_crud').show(300)
     $('#toggle_privileges_button').show(300)
@@ -312,6 +312,7 @@ function isUserAdmin(data){
 function isUser(data){
   if (data.privileges === "none"){
     $('#loggin').hide();
+    $('#un_favorite_button').hide()
     $('#logged_in_name').html("Welcome " + data.name)
     $('#logged_in').show(300);
     $('#favorite_list_button').show(300)
@@ -321,18 +322,18 @@ function isUser(data){
 }
 
 
-function createFavorite(resortID,userUID){
-  var data = {"favorite":{"user":userUID,"resort":resortID}}
+function createFavorite(resortID,userUID,name){
+  var data = {"favorite":{"user":userUID,"resort":resortID,"name":name}}
   createFavoriteAjax(data);
   $('#favorite_list').html("")
-  showFavoriteOfUser(userUID)
+  setTimeout(function(){showFavoriteOfUser(userUID)}, 100);
 }
 
 function destroyFavorite(resortID,userUID){
   var path = favorite_show + userUID + "/"+ resortID
   destroyFavoriteAjax(path);
   $('#favorite_list').html("")
-
+  setTimeout(function(){showFavoriteOfUser(userUID)}, 100);
 }
 
 function showFavoriteOfUser(userID){
@@ -341,14 +342,10 @@ function showFavoriteOfUser(userID){
   showFavoriteOfUserAjax(path)
 }
 
-function callFavorite(data){
-  var path = resort_show + data.resort
-  showResortAjax(path,"favorite")
-}
 
 function renderFavorite(data){
   var name = data.name.replace(/ /g,"%20");
-  $('#favorite_list').append("<h3 class='resort' id=" + "favorite" + name + ">" + data.name + "</h3>");
+  $('#favorite_list').append("<li class='resort' id=" + "favorite" + name + ">" + data.name + "</li>");
 }
 
 
@@ -372,7 +369,6 @@ $(document).ready(function() {
     $('#favorite_list').on('click', '.resort', function(event){
     var path = (resort_name + event.target.id.substring(8));
     $('#about_page').hide()
-    document.getElementById("video_1").pause();
     $('#super_div').hide()
     $('#favorite_button').hide()
     showResortAjax(path,"none")
@@ -385,7 +381,6 @@ $(document).ready(function() {
   $('#closest_list').on('click', '.resort', function(event){
     var path = (resort_name + event.target.id.substring(7));
     $('#about_page').hide()
-    document.getElementById("video_1").pause();
     $('#super_div').hide()
     $('#un_favorite_button').hide()
     showResortAjax(path,"none")
@@ -400,10 +395,10 @@ $(document).ready(function() {
   $('#search_button').on('click', function(){
     var path = (resort_name + $('#search_box').val())
     $('#about_page').hide()
-    document.getElementById("video_1").pause();
     $('#super_div').hide()
     showResortAjax(path,"none");
     if (userUID !== undefined){
+      $('#un_favorite_button').hide()
       $('#favorite_button').show()
     }
     $('#resort_column').show(300)
@@ -416,10 +411,10 @@ $(document).ready(function() {
     if (event.keyCode === 13){
       var path = (resort_name + $('#search_box').val())
       $('#about_page').hide()
-      document.getElementById("video_1").pause();
       $('#super_div').hide(300)
       showResortAjax(path,"none");
       if (userUID !== undefined){
+        $('#un_favorite_button').hide()
         $('#favorite_button').show()
       }
       $('#resort_column').show(300)
@@ -436,24 +431,43 @@ $(document).ready(function() {
   });
 
   //restart page on headaer click
-  $('#header').on('click',function(){
+  $('#pp').on('click',function(){
     location.reload();
+  });
+  $('#play_pause').on('click',function(){
+    video = document.getElementById("video_1")
+    if (video.paused == false) {
+        video.pause();
+        $('#play_pause').html("Play")
+    } else {
+        video.play();
+        $('#play_pause').html("Pause")
+    }
+  })
+
+  $('#mute_button').on('click',function(){
+    video = document.getElementById("video_1")
+    if (video.muted){
+      video.muted = false
+    }else{
+      video.muted = true
+    }
   });
 
   //favorite resort button
   $('#favorite_button').on('click',function(){
     var resortID = $('#resort_info h2').attr('id');
-    resortID = resortID.substring(8)
+    resortID = resortID.substring(8);
     var userID = userUID;
-    createFavorite(resortID,userID)
-  })
+    var name = $('#resort_info h2').html()
+    createFavorite(resortID,userID,name)
+  });
   //UNFAVORITE RESORT BUTTON
   $('#un_favorite_button').on('click',function(){
     var resortID = $('#resort_info h2').attr('id');
     resortID = resortID.substring(8)
     var userID = userUID;
     destroyFavorite(resortID,userID)
-    showFavoriteOfUser(userUID);
   })
 
   //closest header button display list

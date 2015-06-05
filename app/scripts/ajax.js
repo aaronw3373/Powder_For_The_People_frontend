@@ -110,9 +110,6 @@ function showResortAjax(path,user){
     }else if (user==="admin"){
       renderShowResortAdmin(data.resort,data.stats);
     }
-    else if (user==="favorite"){
-      renderFavorite(data.resort)
-    }
   })
   .fail(function() {
     console.log("error");
@@ -255,7 +252,7 @@ function showFavoriteOfUserAjax(path){
   })
   .done(function(data) {
     data.forEach(function(resort){
-      callFavorite(resort);
+      renderFavorite(resort)
     });
   })
   .fail(function() {
