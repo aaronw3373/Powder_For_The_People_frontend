@@ -26,7 +26,7 @@ function createResortAjax(c_json){
     type: 'POST',
     dataType: 'json',
     data: c_json,
-    headers: { Authorization: 'Token token=' + token}
+    headers: { Authorization: 'Token token=' + sessionStorage.getItem('powder-token')}
   })
   .done(function() {
     console.log("Created");
@@ -43,7 +43,7 @@ function updateResortAjax(path,c_json){
     type: 'PATCH',
     dataType: 'json',
     data: c_json,
-    headers: { Authorization: 'Token token=' + token}
+    headers: { Authorization: 'Token token=' + sessionStorage.getItem('powder-token')}
   })
   .done(function() {
     console.log("Updated");
@@ -58,7 +58,7 @@ function deleteResortAjax(path){
   $.ajax({
     url: path,
     type: 'DELETE',
-    headers: { Authorization: 'Token token=' + token}
+    headers: { Authorization: 'Token token=' + sessionStorage.getItem('powder-token')}
   })
   .done(function() {
     console.log("Deleted");
@@ -102,7 +102,7 @@ function showResortAjax(path,user){
     url: path,
     type: 'GET',
     dataType: 'json',
-    headers: { Authorization: 'Token token=' + token}
+    headers: { Authorization: 'Token token=' + sessionStorage.getItem('powder-token')}
   })
   .done(function(data) {
     if (user === "none"){
@@ -143,7 +143,8 @@ function loginUserAjax(path){
       })
   })
   .done(function(data) {
-    token = data.token;
+    // token = data.token;
+    sessionStorage.setItem('powder-token',data.token);
     isUserGod(data);
     isUserAdmin(data);
     isUser(data);
@@ -176,7 +177,7 @@ function updateUserAjax(path,c_json){
     type: 'PATCH',
     dataType: 'json',
     data: c_json,
-    headers: { Authorization: 'Token token=' + token}
+    headers: { Authorization: 'Token token=' + sessionStorage.getItem('powder-token')}
   })
   .done(function() {
     console.log("Updated");
@@ -190,7 +191,7 @@ function destroyUserAjax(path){
   $.ajax({
     url: path,
     type: 'DELETE',
-    headers: { Authorization: 'Token token=' + token}
+    headers: { Authorization: 'Token token=' + sessionStorage.getItem('powder-token')}
   })
   .done(function() {
     console.log("successful delete user");
@@ -205,7 +206,7 @@ function showUserAjax(path){
   $.ajax({
     url: path,
     type: 'GET',
-    headers: { Authorization: 'Token token=' + token}
+    headers: { Authorization: 'Token token=' + sessionStorage.getItem('powder-token')}
   })
   .done(function(data) {
     renderShowUserAdmin(data)
@@ -233,7 +234,7 @@ function createFavoriteAjax(data){
     type: 'POST',
     dataType: 'json',
     data: data,
-    headers: { Authorization: 'Token token=' + token}
+    headers: { Authorization: 'Token token=' + sessionStorage.getItem('powder-token')}
   })
   .done(function() {
     console.log("Created Favorite");
@@ -248,7 +249,7 @@ function showFavoriteOfUserAjax(path){
     url: path,
     type: 'GET',
     dataType: 'json',
-    headers: { Authorization: 'Token token=' + token}
+    headers: { Authorization: 'Token token=' + sessionStorage.getItem('powder-token')}
   })
   .done(function(data) {
     data.forEach(function(resort){
@@ -264,7 +265,7 @@ function destroyFavoriteAjax(path){
   $.ajax({
     url: path,
     type: 'DELETE',
-    headers: { Authorization: 'Token token=' + token}
+    headers: { Authorization: 'Token token=' + sessionStorage.getItem('powder-token')}
   })
   .done(function() {
     console.log("successful delete");

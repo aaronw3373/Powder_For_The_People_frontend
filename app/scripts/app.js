@@ -1,6 +1,5 @@
 var sortlist;
 var userUID;
-var token;
 var lat1;
 var lon1;
 var lat2;
@@ -587,6 +586,7 @@ $(document).ready(function() {
   $('#logout_button').on('click',function(){
     console.log("logging out");
     location.reload();
+    sessionStorage.setItem('powder-token',null);
   });
 
 
