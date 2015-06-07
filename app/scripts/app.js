@@ -1,5 +1,4 @@
 //global var powder_iffe
-var userUID;
 var powder_iife = (function(){
   var sortlist = [];
 
@@ -11,10 +10,14 @@ var powder_iife = (function(){
   var localAPI = "http://localhost:5000"
   var herokuAPI = "https://weinberg-powder.herokuapp.com"
   var currentAPI;
-  if (true){
-    currentAPI = localAPI;
-  }else{
+
+  function deployed(){
+    return true
+  }
+  if (deployed()){
     currentAPI = herokuAPI;
+  }else{
+    currentAPI = localAPI;
   }
 
   var resort_index = currentAPI + "/resorts"
@@ -295,10 +298,11 @@ var powder_iife = (function(){
       $('#pow_factor').hide()
       $('#about_page').hide()
       $('#un_favorite_button').hide()
+      $('#search_container').show(300)
       $('#super_div').show(300)
       $('#favorite_list_button').show(300)
       $('#favorite_button_div').show(300)
-      userUID = data.id
+      sessionStorage.setItem('userUID',data.id);
       GODPRIV();
     }
   }
@@ -314,12 +318,13 @@ var powder_iife = (function(){
       $('#about_page').hide()
       $('#user_crud').hide()
       $('#un_favorite_button').hide()
+      $('#search_container').show(300)
       $('#super_div').show(300)
       $('#resort_crud').show(300)
       $('#toggle_privileges_button').show(300)
       $('#favorite_list_button').show(300)
       $('#favorite_button_div').show(300)
-      userUID = data.id
+      sessionStorage.setItem('userUID',data.id);
       ADMINPRIV()
     }
   }
@@ -327,11 +332,12 @@ var powder_iife = (function(){
     if (data.privileges === "none"){
       $('#loggin').hide();
       $('#un_favorite_button').hide()
+      $('#search_container').show(300)
       $('#logged_in_name').html("Welcome " + data.name)
       $('#logged_in').show(300);
       $('#favorite_list_button').show(300)
       $('#favorite_button_div').show(300)
-      userUID = data.id
+      sessionStorage.setItem('userUID',data.id);
     }
   }
 
@@ -436,6 +442,7 @@ var powder_iife = (function(){
       })
     })
     .fail(function() {
+      setTimeout(function(){loadResortsAjax()}, 3000);
       console.log("error");
     })
   }
@@ -630,6 +637,7 @@ $(document).ready(function() {
   //resort list click to show resort
     $('#favorite_list').on('click', '.resort', function(event){
     var path = (powder_iife.resort_name + event.target.id.substring(8));
+    $('#search_container').show(300)
     $('#about_page').hide()
     $('#super_div').hide()
     $('#favorite_button').hide()
@@ -642,6 +650,7 @@ $(document).ready(function() {
 
   $('#closest_list').on('click', '.resort', function(event){
     var path = (powder_iife.resort_name + event.target.id.substring(7));
+    $('#search_container').show(300)
     $('#about_page').hide()
     $('#super_div').hide()
     $('#un_favorite_button').hide()
@@ -659,7 +668,7 @@ $(document).ready(function() {
     $('#about_page').hide()
     $('#super_div').hide()
     powder_iife.showResortAjax(path,"none");
-    if (userUID !== undefined){
+    if (sessionStorage.getItem('userUID') !== undefined){
       $('#un_favorite_button').hide()
       $('#favorite_button').show()
     }
@@ -675,7 +684,7 @@ $(document).ready(function() {
       $('#about_page').hide()
       $('#super_div').hide(300)
       powder_iife.showResortAjax(path,"none");
-      if (userUID !== undefined){
+      if (sessionStorage.getItem('userUID') !== undefined){
         $('#un_favorite_button').hide()
         $('#favorite_button').show()
       }
@@ -693,7 +702,7 @@ $(document).ready(function() {
     $('#about_page').hide()
     $('#super_div').hide()
     powder_iife.showResortAjax(path,"none");
-    if (userUID !== undefined){
+    if (sessionStorage.getItem('userUID') !== undefined){
       $('#un_favorite_button').hide()
       $('#favorite_button').show()
     }
@@ -711,7 +720,7 @@ $(document).ready(function() {
       $('#about_page').hide()
       $('#super_div').hide(300)
       powder_iife.showResortAjax(path,"none");
-      if (userUID !== undefined){
+      if (sessionStorage.getItem('userUID') !== undefined){
         $('#un_favorite_button').hide()
         $('#favorite_button').show()
       }
@@ -759,7 +768,7 @@ $(document).ready(function() {
   $('#favorite_button').on('click',function(){
     var resortID = $('#resort_info h2').attr('id');
     resortID = resortID.substring(8);
-    var userID = userUID;
+    var userID = sessionStorage.getItem('userUID');
     var name = $('#resort_info h2').html()
     powder_iife.createFavorite(resortID,userID,name)
   });
@@ -767,7 +776,7 @@ $(document).ready(function() {
   $('#un_favorite_button').on('click',function(){
     var resortID = $('#resort_info h2').attr('id');
     resortID = resortID.substring(8)
-    var userID = userUID;
+    var userID = sessionStorage.getItem('userUID');
     powder_iife.destroyFavorite(resortID,userID)
   })
 
@@ -783,7 +792,7 @@ $(document).ready(function() {
     $('#closest_list').hide(300)
     $('#favorite_list').show(300)
     $('#favorite_list').html("")
-    powder_iife.showFavoriteOfUser(userUID);
+    powder_iife.showFavoriteOfUser(sessionStorage.getItem('userUID'));
   });
 
   //sign to show sign up page
@@ -850,6 +859,7 @@ $(document).ready(function() {
     console.log("logging out");
     location.reload();
     sessionStorage.setItem('powder-token',null);
+    sessionStorage.setItem('userUID',null);
   });
 
 
