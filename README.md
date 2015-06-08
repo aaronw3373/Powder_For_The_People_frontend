@@ -1,13 +1,13 @@
 
 #Powder For The People
 
-thepowderpeople.com
+http://thepowderpeople.com
 
 backend repo: https://github.com/aaronw3373/project_2_backend
 
 #Explanation
 My app compares ski resorts.
-It uses ski resort statistics, current weather information,
+It uses ski resort statistics, current weather information(wunderground),
 and distance calculation to help users determine where to go skiing.
 Users can log in to save their favorite resorts.
 and users can search by name in the search bar for resorts.
