@@ -20,10 +20,29 @@ There is a bug in deleting users that I think is related to dependecies issues w
 
 I need more backend validations to even more safely allow only admin to do CRUD tasks on resorts and users
 
+Video not supported in safari yet
 
-###################################
-User Stories
-###################################
+Only in firefox the magnifine glass of my search bar has the wrong possitioning
+
+#Next Steps
+1. seed in the rest of north american resorts (and then the world)
+
+2. fix the bugs listed above
+
+3. greater a worker back end to regularily pull the weather info and store it so each call for a resort will have a shorter response time and not have to make the weather request each time
+
+4. add cost of lift tickets
+
+5. add if there are waffle cabins, number of bars and restaurants (yelp API)
+
+6. add the types of terrain featured at each resort
+
+7. use another third party API to get populate my Database with the resort stats so I do not have to do it manually
+
+8. user can sort threw resorts by closest, pow index, price, name, etc...
+
+
+#User Stories
 1. User can log in
 
 2. from list of resorts user clicks and sees resort info
