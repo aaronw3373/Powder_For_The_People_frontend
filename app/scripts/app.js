@@ -12,7 +12,7 @@ var powder_iife = (function(){
   var currentAPI;
 
   function deployed(){
-    return true
+    return false
   }
   if (deployed()){
     currentAPI = herokuAPI;

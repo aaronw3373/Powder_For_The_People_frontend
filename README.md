@@ -1,11 +1,25 @@
-#Powder
-Powder For The People
-Powder For Me
 
-Live site: http://aaronw3373.github.io/project_2_frontend/
+#Powder For The People
 
+thepowderpeople.com
 
 backend repo: https://github.com/aaronw3373/project_2_backend
+
+#Explanation
+My app compares ski resorts.
+It uses ski resort statistics, current weather information,
+and distance calculation to help users determine where to go skiing.
+Users can log in to save their favorite resorts.
+and users can search by name in the search bar for resorts.
+
+#Powder Index
+I came up with a algorithm/function which takes in all the data points and outputs a single number I call the Powder Index which is used to compare resorts.
+
+#Bugs
+There is a bug in deleting users that I think is related to dependecies issues with favorites. (In progress)
+
+I need more backend validations to even more safely allow only admin to do CRUD tasks on resorts and users
+
 
 ###################################
 User Stories
@@ -14,38 +28,12 @@ User Stories
 
 2. from list of resorts user clicks and sees resort info
 
-3. user can save favorite resorts
+3. user can favorite resorts
+
+4. user can unfavorite resorts
 
 4. user can use search bar to search for resorts
 
-6. user can see a list of closest resorts
+6. user can see a list of closest resorts to their current location
 
-7. user can preference what should matter in the algorithm to create the powder index
-
-
-###################################
-App features to work on
-###################################
-0. user model w/o password but has favorites list
-1. User clickes to favorite resort and it saves to that users favorites list
-2. when logged in as user shows favorite resorts first
-3. determine distance to resorts and display closest resorts
-
-ALSO important
-user authentication (not in house)
-
-
-resort datatypes
-  vertical ft
-  acers
-  %open as decimal
-  recent snowfall inches (last 24hrs? 48hrs?)
-  people per year
-  days open per year
-  snow conditions
-
-Powder index is created a proprietary algorithm that takes in all the data types and outputs a single number
-
-
-google sheets with the way the resort data as to be represented in the db
-https://docs.google.com/spreadsheets/d/1CeANICMCCl1IgIFEvJUNEYnwSd2jSX9KJuOGKaOyZzk/edit#gid=0
+7. admin users can CRUD resorts and other users
