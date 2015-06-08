@@ -201,7 +201,7 @@ input{
   -moz-border-radius: 8px;
   border-radius: 8px;
 }
-#psw:hover,#usn:hover,#new_fname:hover, #new_username:hover, #new_password:hover,#logout_button:hover, #toggle_privileges_button:hover,.logs_pages:hover,#login_button:hover, #signup_button:hover,.logs_return:hover{
+#psw:hover,#usn:hover,#new_fname:hover, #new_username:hover, #new_password:hover,#logout_button:hover, #toggle_privileges_button:hover,.logs_pages:hover,#login_button:hover,#signin_button:hover, #signup_button:hover,.logs_return:hover{
   background:#ffffff;
 }
 #signin_button, #signup_button{
