@@ -23,15 +23,15 @@ padding: 0;
 }
 #header h1{
   font-size: 72pt;
-  color: #1975A3;
+  color: #000099;
   font-weight: bold;
-  font-family: 'Righteous', cursive;
+  font-family: 'Ubuntu', sans-serif;
   float:left;
   text-align: left;
   padding-left: 30px;
  }
  #header h1:hover{
-  color:#65737e;
+  color:#000055;
  }
  #play_pause, #mute_button{
   font-size: 40pt;
@@ -41,10 +41,10 @@ padding: 0;
   width: 100%;
   background-color: rgba(204,204,204, 0);
   border:none;
-  font-family: 'Hammersmith One', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
  }
   #play_pause:hover, #mute_button:hover{
-    color:#1975A3;
+    color:#000099;
   }
 
 /*About Search Login bar*/
@@ -64,13 +64,15 @@ input{
   vertical-align: middle;
   white-space: nowrap;
   position: relative;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 #search_container_2 .icon2{
-  width:48px;
-  height: 48px;
+  width:36px;
+  height: 36px;
   position: absolute;
-  margin-left: 34px;
-  margin-top: 30px;
+  margin-left: 30px;
+  margin-top: 20px;
   z-index: 1;
   color: #4f5b66;
 }
@@ -154,9 +156,10 @@ input{
   transition: background .55s ease;
 }
 #search_box2{
-  height:100px;
-  font-size: 40pt;
-  padding-left: 90px;
+  width: 90%;
+  height:80px;
+  font-size: 36pt;
+  padding-left: 80px;
 }
 #search_button, #search_button2{
   width:15%;
@@ -168,8 +171,8 @@ input{
 #logged_in_name{
   font-size: 2.5vw;
   margin-left:30%;
-  color: #1975A3;
-  font-family: 'Righteous', cursive;
+  color: #000099;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 #logged_in_name:hover{
@@ -297,7 +300,7 @@ input{
   color:#000000;
 }
 .crud_header{
-  font-family: 'Hammersmith One', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   background-color: rgba(230,230, 230, 1.0);
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
@@ -305,7 +308,7 @@ input{
   padding-left: 50px;
 }
 .crud_header:hover{
-  color: #1975A3;
+  color: #000099;
 }
 
 #about_page{
@@ -318,8 +321,8 @@ input{
   margin-top: 10%;
   font-size: 60pt;
   font-weight:bold;
-  color: #1975A3;
-  font-family: 'Hammersmith One', sans-serif;
+  color: #000099;
+  font-family: 'Ubuntu', sans-serif;
 }
 /*left column resort info*/
 #resort_column{
@@ -338,17 +341,17 @@ input{
 }
 #resort_info h4{
   font-size: 30px;
-  font-family: 'Hammersmith One', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   font-weight: bold;
 }
 #resort_info h2{
   font-size: 40px;
-  font-family: 'Hammersmith One', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   font-weight: bold;
 }
 #URdistance{
   font-size: 40px;
-  font-family: 'Hammersmith One', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   font-weight: bold;
   padding:20px;
   padding-top: 0;
@@ -376,7 +379,7 @@ input{
   border-radius: 8px;
 }
 #favorite_button:hover, #un_favorite_button:hover{
-  color: #1975A3;
+  color: #000099;
 }
 /*Middle column powfactor*/
 #pow_factor{
@@ -390,7 +393,7 @@ input{
   padding:20px;
 }
 #pow_factor_info h2{
-  font-family: 'Hammersmith One', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   font-weight: bold;
   font-size: 28pt;
 }
@@ -412,11 +415,11 @@ input{
   padding-left: 10px;
   padding-bottom: 10px;
   height:80px;
-  font-family: 'Righteous', cursive;
+  font-family: 'Ubuntu', sans-serif;
 }
 .resort{
   font-size: 24pt;
-  font-family: 'Hammersmith One', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   font-weight: bold;
 }
 #resorts_show{
@@ -435,10 +438,10 @@ li.resort{
   font-size: 30pt;
 }
 #favorite_list_button:hover, #closest_list_button:hover{
-  color:#1975A3;
+  color:#000099;
 }
 .resort:hover{
-  color: #1975A3;
+  color: #000099;
 }
 
 #location_distance{

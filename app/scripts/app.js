@@ -68,13 +68,13 @@ var powder_iife = (function(){
 
   function getLocation() {
       if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition);
+          navigator.geolocation.getCurrentPosition(setPosition);
       } else {
           zeta.innerHTML = "Geolocation is not supported by this browser.";
       }
   }
 
-  function showPosition(position) {
+  function setPosition(position) {
       lat1 = position.coords.latitude
       lon1 = position.coords.longitude
   }
