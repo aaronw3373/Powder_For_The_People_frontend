@@ -437,6 +437,7 @@ li.resort{
 }
 #favorite_list_button, #closest_list_button{
   font-size: 30pt;
+  font-weight: bold;
 }
 #favorite_list_button:hover, #closest_list_button:hover{
   color:#000099;
