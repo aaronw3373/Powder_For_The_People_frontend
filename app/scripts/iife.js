@@ -13,7 +13,7 @@ var powder_iife = (function(){
   var currentAPI;
 
   function deployed(){
-    return true;
+    return false;
   }
   if (deployed()){
     currentAPI = herokuAPI;
@@ -473,8 +473,8 @@ var powder_iife = (function(){
       dataType: 'json',
       data: JSON.stringify({
           credentials: {
-            email: $('#usn').val(),
-            password: $('#psw').val()
+            email: $('#email_form').val(),
+            password: $('#password_form').val()
           }
         })
     })

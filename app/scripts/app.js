@@ -1,13 +1,19 @@
 'use strict';
 
-//TODO: make 2 separate files for iife vs doc.ready
-
-//TODO: SEMICOLlones everywhere
-
 //TODO: look into grouping code by user story
 
 $(document).ready(function() {
   setTimeout(function(){powder_iife.getLocation();},400);
+
+  setTimeout(function(){powder_iife.loadResortsAjax();}, 500);
+
+  setTimeout(function(){
+    $('#main_content').show(1000);
+  },500);
+  setTimeout(function(){
+    $('#header').show(1000);
+  },1500);
+
   //poulate full_list div
 
   //resort list click to show resort
@@ -201,11 +207,10 @@ $(document).ready(function() {
   });
 
   //login button on click with hard coded admin used info to CRUD
-  //TODO rename psw to password_form
-  $('#psw').keyup(function(event){
+  $('#password_form').keyup(function(event){
     if (event.keyCode === 13){
-      var email = $('#usn').val();
-      var password = $('#psw').val();
+      var email = $('#email_form').val();
+      var password = $('#password_form').val();
       var path = (powder_iife.currentAPI + "/login");
       if(true){
         powder_iife.loginUserAjax(path);
@@ -214,10 +219,9 @@ $(document).ready(function() {
       return false;
     }
   });
-  //TODO rename usn to username_field ...
   $('#signin_button').on('click',function(){
-    var email = $('#usn').val();
-    var password = $('#psw').val();
+    var email = $('#email_form').val();
+    var password = $('#password_form').val();
     var path = (powder_iife.currentAPI + "/login");
     if(true){
      powder_iife.loginUserAjax(path);
@@ -245,17 +249,6 @@ $(document).ready(function() {
     sessionStorage.setItem('powder-token',null);
     sessionStorage.setItem('userUID',null);
   });
-
-
-  //TODO move these to the top of the doc.ready
-  setTimeout(function(){powder_iife.loadResortsAjax();}, 500);
-
-  setTimeout(function(){
-    $('#main_content').show(1000);
-  },500);
-  setTimeout(function(){
-    $('#header').show(1000);
-  },1500);
 
 
 });

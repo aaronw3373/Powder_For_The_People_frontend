@@ -192,7 +192,7 @@ input{
   -moz-border-radius: 8px;
   border-radius: 8px;
 }
-#psw, #usn{
+#password_form, #email_form{
   width: 25%;
   height: 50px;
   background-color: rgba(204,204,204, 0.8);
@@ -205,7 +205,7 @@ input{
   -moz-border-radius: 8px;
   border-radius: 8px;
 }
-#psw:hover,#usn:hover,#new_fname:hover, #new_username:hover, #new_password:hover,#logout_button:hover, #toggle_privileges_button:hover,.logs_pages:hover,#login_button:hover,#signin_button:hover, #signup_button:hover,.logs_return:hover{
+#password_form:hover,#email:hover,#new_fname:hover, #new_username:hover, #new_password:hover,#logout_button:hover, #toggle_privileges_button:hover,.logs_pages:hover,#login_button:hover,#signin_button:hover, #signup_button:hover,.logs_return:hover{
   background:#ffffff;
 }
 #signin_button, #signup_button{
