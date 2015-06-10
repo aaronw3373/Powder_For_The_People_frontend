@@ -2,7 +2,7 @@
   "name": "project_2_frontend",
   "version": "0.0.0",
   "description": "Powder For The People Powder For Me",
-  "main": "index.html",
+  "main": "app/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,7 +12,7 @@
     "apache-server-configs": "^2.7.1",
     "grunt": "^0.4.5",
     "grunt-autoprefixer": "^1.0.0",
-    "grunt-concurrent": "^0.5.0",
+    "grunt-concurrent": "^1.0.0",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-concat": "^0.5.0",
     "grunt-contrib-connect": "^0.8.0",
@@ -33,20 +33,9 @@
     "grunt-wiredep": "^1.7.0",
     "jshint-stylish": "^0.4.0",
     "load-grunt-tasks": "^0.4.0",
-    "time-grunt": "^1.2.1",
-    "grunt-blanket": "0.0.8",
-    "grunt-istanbul": "^0.5.0",
-    "grunt-jasmine-nodejs": "^1.4.0",
-    "grunt-jsbeautifier": "^0.2.10",
-    "grunt-jscs": "^1.8.0",
-    "grunt-jsonlint": "^1.0.4",
-    "grunt-node-inspector": "^0.2.0",
-    "grunt-nodemon": "^0.4.0",
-    "grunt-open": "^0.2.3",
-    "grunt-plato": "^1.2.1",
-    "load-grunt-config": "^0.17.1"
+    "time-grunt": "^1.2.1"
   },
   "engines": {
-    "node": ">=0.10.25"
+    "node": ">=0.12.0"
   }
 }
