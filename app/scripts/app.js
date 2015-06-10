@@ -7,12 +7,12 @@ var powder_iife = (function(){
   var lat2;
   var lon2;
 
-  var localAPI = "http://localhost:5000"
-  var herokuAPI = "https://weinberg-powder.herokuapp.com"
+  var localAPI = "http://localhost:5000";
+  var herokuAPI = "https://weinberg-powder.herokuapp.com";
   var currentAPI;
 
   function deployed(){
-    return true
+    return true;
   }
   if (deployed()){
     currentAPI = herokuAPI;
@@ -20,16 +20,14 @@ var powder_iife = (function(){
     currentAPI = localAPI;
   }
 
-  var resort_index = currentAPI + "/resorts"
-  var resort_show = currentAPI + "/resorts/"
-  var resort_name = currentAPI + "/resortsname?name="
-
-  var user_index = currentAPI + "/users"
-  var user_show = currentAPI + "/users/"
-  var user_name = currentAPI + "/useremail?email="
-  var user_register = currentAPI + "/register"
-
-  var favorite_index = currentAPI + "/favorites"
+  var resort_index = currentAPI + "/resorts";
+  var resort_show = currentAPI + "/resorts/";
+  var resort_name = currentAPI + "/resortsname?name=";
+  var user_index = currentAPI + "/users";
+  var user_show = currentAPI + "/users/";
+  var user_name = currentAPI + "/useremail?email=";
+  var user_register = currentAPI + "/register";
+  var favorite_index = currentAPI + "/favorites";
   var favorite_show = currentAPI + "/favorites/"
 
   //determine which quote to display
@@ -54,7 +52,7 @@ var powder_iife = (function(){
         return betterGo;
       }
       else{
-        return needGo
+        return needGo;
       }
     }
     else{
@@ -75,8 +73,8 @@ var powder_iife = (function(){
   }
 
   function setPosition(position) {
-      lat1 = position.coords.latitude
-      lon1 = position.coords.longitude
+      lat1 = position.coords.latitude;
+      lon1 = position.coords.longitude;
   }
 
   function calcDistance(){
@@ -100,65 +98,65 @@ var powder_iife = (function(){
   }
 
   function showDistance(){
-    var dist = calcDistance()
+    var dist = calcDistance();
     if (dist) {
-    delta.innerHTML = "Miles: " + dist
+    delta.innerHTML = "Miles: " + dist;
     }
   }
 
   //GOD priviliges
   function GODPRIV(){
     $('#create_crud').on('click', function(){
-      var c_json = getCRUDData()
+      var c_json = getCRUDData();
       createResortAjax(c_json);
     });
     $('#read_crud_ID').on('click', function(){
-      var c_json = getCRUDData()
-      var path = (resort_show + $('#ID_crud').val())
-      showResortAjax(path,"admin")
+      var c_json = getCRUDData();
+      var path = (resort_show + $('#ID_crud').val());
+      showResortAjax(path,"admin");
     });
     $('#read_crud_name').on('click', function(){
-      var c_json = getCRUDData()
-      var path = resort_name + c_json.resort.name
-      showResortAjax(path,"admin")
+      var c_json = getCRUDData();
+      var path = resort_name + c_json.resort.name;
+      showResortAjax(path,"admin");
     });
     $('#update_crud').on('click', function(){
-      var id = $('#ID_crud').val()
-      var c_json = getCRUDData()
-      var updateAPI = resort_show + id
+      var id = $('#ID_crud').val();
+      var c_json = getCRUDData();
+      var updateAPI = resort_show + id;
       updateResortAjax(updateAPI,c_json);
     });
     $('#destroy_crud_id').on('click', function(){
-      var c_json = getCRUDData()
-      var deleteAPI = (resort_show + $('#ID_crud').val())
+      var c_json = getCRUDData();
+      var deleteAPI = (resort_show + $('#ID_crud').val());
       deleteResortAjax(deleteAPI);
     });
     $('#destroy_crud_name').on('click', function(){
-      var c_json = getCRUDData()
-      var deleteAPI = resort_name + c_json.resort.name
+      var c_json = getCRUDData();
+      var deleteAPI = resort_name + c_json.resort.name;
       deleteResortAjax(deleteAPI);
     });
     //user Crud
     $('#User_destroy_crud_id').on('click', function(){
-      var user = $('#User_ID_crud').val()
-      var path = user_show + user
+      var user = $('#User_ID_crud').val();
+      var path = user_show + user;
       destroyUserAjax(path);
     });
     $('#User_update_crud').on('click', function(){
-      var user = $('#User_ID_crud').val()
-      var path = user_show + user
-      var privileges = $('#User_priv_crud').val()
-      var c_json = {"user":{"privileges":privileges}}
+      var user = $('#User_ID_crud').val();
+      var path = user_show + user;
+      var privileges = $('#User_priv_crud').val();
+      var c_json = {"user":{"privileges":privileges}};
       updateUserAjax(path,c_json);
     })
     $('#User_read_id').on('click', function(){
-      var user = $('#User_ID_crud').val()
-      var path = user_show + user
+      var user = $('#User_ID_crud').val();
+      var path = user_show + user;
       showUserAjax(path);
     })
     $('#User_read_name').on('click', function(){
-      var user = $('#User_email_crud').val()
-      var path = user_name + user
+      var user = $('#User_email_crud').val();
+      var path = user_name + user;
       showUserAjax(path);
     })
   }
@@ -166,18 +164,18 @@ var powder_iife = (function(){
   //ADMIN priviliges
   function ADMINPRIV(){
     $('#create_crud').on('click', function(){
-      var c_json = getCRUDData()
+      var c_json = getCRUDData();
       createResortAjax(c_json);
     });
     $('#read_crud_ID').on('click', function(){
-      var c_json = getCRUDData()
-      var path = (resort_show + $('#ID_crud').val())
-      showResortAjax(path,"admin")
+      var c_json = getCRUDData();
+      var path = (resort_show + $('#ID_crud').val());
+      showResortAjax(path,"admin");
     });
     $('#read_crud_name').on('click', function(){
-      var c_json = getCRUDData()
-      var path = resort_name + c_json.resort.name
-      (path,"admin")
+      var c_json = getCRUDData();
+      var path = resort_name + c_json.resort.name;
+      (path,"admin");
     });
     $('#update_crud').on('click', function(){
       var id = $('#ID_crud').val()
@@ -216,6 +214,7 @@ var powder_iife = (function(){
     $('#resort_info').html("<h2 id=" + "favorite" +data.id + ">" + data.name + "</h2>" + "<h4 id='vertical'>Vertical Feet: " + data.vertical + "</h4>" +   "<h4 id='acres'>Skiable Acres: " + data.acres + "</h4>");
     lat2 = data.latitude
     lon2 = data.longitude
+    console.log(lon2) + " : " + lon1;
     showDistance()
     $('#rating').html("Powder Index: " + rating);
     if (temp){
@@ -629,6 +628,13 @@ var powder_iife = (function(){
 //CLICK HANDLERS
 //
 
+//TODO: make 2 separate files for iife vs doc.ready
+
+
+//TODO: SEMICOLlones everywhere
+
+
+//TODO: look into grouping code by user story
 
 $(document).ready(function() {
   setTimeout(function(){powder_iife.getLocation()},400);
@@ -678,6 +684,8 @@ $(document).ready(function() {
     $('#search_box').val("")
     return false;
   });
+
+  //TODO: put the insides of these click handlers in a function.
   $('#search_box').keyup(function(event) {
     if (event.keyCode === 13){
       var path = (powder_iife.resort_name + $('#search_box').val())
@@ -739,9 +747,12 @@ $(document).ready(function() {
   });
 
   //restart page on headaer click
+
+  //TODO:rename to title or header ...
   $('#pp').on('click',function(){
     location.reload();
   });
+
   $('#play_pause').on('click',function(){
     var video = document.getElementById("video_1")
     if (video.paused == false) {
@@ -795,14 +806,15 @@ $(document).ready(function() {
     powder_iife.showFavoriteOfUser(sessionStorage.getItem('userUID'));
   });
 
-  //sign to show sign up page
+  //TODO rename signup_page_button
+  //TODO loggin??? 1 g
   $('#signUp_page').on('click',function(){
     $('#loggin').hide(300);
     $('#login_page').hide(300);
     $('#signUp_page').hide(300);
     $('#signUp').show(300);
   });
-
+  //TODO: rename buttons
   //login to show login page
   $('#login_page').on('click', function(){
     $('#signUp').hide(300);
@@ -819,6 +831,7 @@ $(document).ready(function() {
   })
 
   //login button on click with hard coded admin used info to CRUD
+  //TODO rename psw to password_form
   $('#psw').keyup(function(event){
     if (event.keyCode === 13){
       var email = $('#usn').val()
@@ -831,6 +844,7 @@ $(document).ready(function() {
       return false;
     }
   });
+  //TODO rename usn to username_field ...
   $('#signin_button').on('click',function(){
     var email = $('#usn').val()
     var password = $('#psw').val()
@@ -863,7 +877,7 @@ $(document).ready(function() {
   });
 
 
-
+  //TODO move these to the top of the doc.ready
   setTimeout(function(){powder_iife.loadResortsAjax()}, 500);
 
   setTimeout(function(){
